@@ -1,0 +1,10 @@
+@media only screen and (max-width: 768px) {
+  .home-head {
+    font-size: 210%;
+  }
+
+  #back-icon,
+  #front-icon {
+    top: -220%;
+  }
+}

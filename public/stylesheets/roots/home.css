@@ -1,0 +1,142 @@
+body {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+  background: rgb(204,204,204);
+  background: linear-gradient(90deg, rgba(204,204,204,1) 0%, rgba(255,255,255,1) 50%, rgba(204,204,204,1) 100%);
+}
+
+/* ------- Navigation styles ------- */
+/* .navbar-toggler-icon {
+  font-size: 50%
+}
+
+.navbar-nav {
+  margin-right: auto;
+} */
+
+
+/* ------- Home Page styles ------- */
+.front {
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+}
+
+.back {
+    position: absolute;
+    top: 50%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+}
+
+.intro {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.home-head {
+  font-size: 810%;
+  font-weight: 200;
+  color: #fff;
+  text-shadow: 2px 2px #555;
+}
+
+#front-icon {
+  position: absolute;
+  top: -40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 600%;
+  margin-bottom: 5%;
+  color: #fff;
+}
+
+#back-icon {
+  position: absolute;
+  top: -40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 600%;
+  margin-bottom: 5%;
+  color: #fff;
+}
+
+#head-back::after {
+  content: 'End';
+  font-size: 20%;
+}
+
+#head-front::after {
+  content: 'End';
+  font-size: 20%;
+}
+
+#head-anchor {
+  text-decoration: none;
+  color: #fff;
+}
+#head-anchor:hover {
+  text-decoration: none;
+  color: #6e6e6e;
+}
+
+/* ------- Sign In Page styles ------- */
+
+#signIn-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+#signIn-icon {
+  font-size: 400%;
+  color: #cccccc;
+}
+
+#signIn-submit-btn {
+  color: #fff;
+  border: 1px solid #6c757d;
+  background-color: #6c757d;
+}
+
+#signIn-submit-btn:hover {
+  transform: scale(.9);
+}
+
+
+@media only screen and (max-width: 768px) {
+  .home-head {
+    font-size: 210%;
+  }
+
+  #back-icon,
+  #front-icon {
+    top: -220%;
+  }
+  #signIn-icon {
+    font-size: 200%;
+  }
+}
+
+/* @media only screen and (max-width: 768px) {
+  #back-icon,
+  #front-icon {
+    top: -100%;
+  }
+} */
+
+/* @media only screen and (max-width: 568px) {
+  #back-icon,
+  #front-icon {
+    top: -90%;
+    fons
+  }
+} */
