@@ -19,13 +19,15 @@ router.get('/', RootController.homePage);
 //   })
 // });
 
-router.get('/sign', RootController.signUp);
+router.get('/signup', RootController.signUp);
 
 // router.get('/create', function(req, res) {
 //   res.render('roots/create', {
 //     title: 'Create Article Page'
 //   })
 // });
-router.get('/create', RootController.createArticle);
+router.get('/createarticle', RootController.createArticle);
+
+router.get('/:subject', RootController.frontOrBack);
 
 module.exports = router;

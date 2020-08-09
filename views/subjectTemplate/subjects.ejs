@@ -1,0 +1,17 @@
+<%- include('../partials/subjectPartials/header') -%>
+<%- include('../partials/nav') -%>
+<h3>This is the page users see when they click on the <%= subjectLink %> link on the home page.</h3>
+<small>This page would show all the <%= subject  %> TOPICS available to read</small>
+
+<ol>
+  <li>Decide what are the <%= subject  %> topics i want to feature on this site </li>
+  <li>Design and style the page based on the topics featured</li>
+</ol>
+
+<small>These are the topics: </small>
+<% topics.forEach((topic, i) => { %>
+  <a href="/topic/<%= topic %>"> <%= topic %> </a>
+<% }); %>
+
+
+<%- include('../partials/subjectPartials/footer') -%>
