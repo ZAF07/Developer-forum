@@ -30,4 +30,11 @@ router.get('/createarticle', RootController.createArticle);
 
 router.get('/:subject', RootController.frontOrBack);
 
+// POST handler
+
+router.post('/createarticle', (req,res) => {
+  res.send(req.body)
+  // Here i need to create a Model Controller to handle and save the data recieved
+})
+
 module.exports = router;

@@ -98,7 +98,7 @@ body {
 
 #signIn-icon {
   font-size: 400%;
-  color: #cccccc;
+  color: #808080;
 }
 
 #signIn-submit-btn {
@@ -108,10 +108,58 @@ body {
 }
 
 #signIn-submit-btn:hover {
-  transform: scale(.9);
+  transform: scale(1.02);
+}
+
+/* ------- Create Article Page styles ------- */
+
+#createArticle-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+#createArticle-header {
+  background: rgb(204,204,204);
+  background: linear-gradient(90deg, rgba(204,204,204,1) 0%, rgba(56,56,56,0.4055793991416309) 65%, rgba(204,204,204,1) 100%);
+-webkit-text-fill-color: transparent;
+-webkit-background-clip: text;
+font-size: 350%;
+font-weight: 200;
+}
+
+#article-icon {
+  font-size: 600%;
+  color: #808080;
+}
+
+#title {
+  border-radius: .3rem;
+}
+
+#content-lable {
+  background: rgb(204,204,204);
+  background: linear-gradient(90deg, rgba(204,204,204,1) 0%, rgba(56,56,56,0.4055793991416309) 65%, rgba(204,204,204,1) 100%);
+-webkit-text-fill-color: transparent;
+-webkit-background-clip: text;
+font-size: 150%;
+font-weight: 400;
+}
+
+#create-article-btn {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+#create-article-btn:hover {
+  transform: scaleX(1.1);
+  background-color: #808080;
 }
 
 
+
+/* ------- Media Queries ------- */
 @media only screen and (max-width: 768px) {
   .home-head {
     font-size: 210%;

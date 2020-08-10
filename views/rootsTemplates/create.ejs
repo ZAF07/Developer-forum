@@ -1,14 +1,48 @@
 <%- include('../partials/rootsPartials/header') -%>
     <%- include('../partials/nav') -%>
 
-    <h1>Create Article Page</h1>
-    <small>
+    <!-- <h1>Create Article Page</h1> -->
+    <!-- <small>
       <ol>
         <li>Create a from to allow logged in users/ members to create and contribute articles</li>
 
       </ol>
 
-    </small>
+    </small> -->
+
+    <div class="container-fluid mt-5 p-5" id="createArticle-container">
+      <i class="far fa-newspaper" id="article-icon"></i>
+      <h1 class="mb-5" id="createArticle-header">Share your Ideas</h1>
+      <br>
+      <div class="container">
+
+
+      <form class="" action="/createarticle" method="post">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input id="title" type="text" name="title">
+        </div>
+        <div class="form-group">
+          <label for="editor" id="content-lable">Content</label>
+          <textarea id="editor" name="content"></textarea>
+          <script>
+                  ClassicEditor
+                          .create( document.querySelector( '#editor' ), {
+                            toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote' ],
+
+                          } )
+                          .then( editor => {
+                                  console.log( '(create.ejs)This is ckEditor ---> ', editor.sourceElement.innerHTML );
+                          } )
+                          .catch( error => {
+                                  console.error( error );
+                          } );
+          </script>
+        </div>
+        <button class="btn btn-sm" id="create-article-btn" type="submit" name="submit">Submit</button>
+      </form>
+      </div>
+    </div>
 
 
 <%- include('../partials/rootsPartials/footer') -%>
