@@ -18,12 +18,13 @@
 
 
       <form class="" action="/createarticle" method="post">
+        <script src="https://cdn.ckeditor.com/ckeditor5/21.0.0/classic/ckeditor.js"></script>
         <div class="form-group">
-          <label for="title">Title</label>
+          <label for="title" id="title-label">Title</label>
           <input id="title" type="text" name="title">
         </div>
         <div class="form-group">
-          <label for="editor" id="content-lable">Content</label>
+          <label for="editor" id="content-label">Content</label>
           <textarea id="editor" name="content"></textarea>
           <script>
                   ClassicEditor

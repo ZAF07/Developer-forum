@@ -84,7 +84,8 @@ body {
 }
 #head-anchor:hover {
   text-decoration: none;
-  color: #6e6e6e;
+  color: #56606b;
+  transition: color .8s;
 }
 
 /* ------- Sign In Page styles ------- */
@@ -98,7 +99,7 @@ body {
 
 #signIn-icon {
   font-size: 400%;
-  color: #808080;
+  color: #56606b;
 }
 
 #signIn-submit-btn {
@@ -109,6 +110,7 @@ body {
 
 #signIn-submit-btn:hover {
   transform: scale(1.02);
+  transition: .5s;
 }
 
 /* ------- Create Article Page styles ------- */
@@ -131,14 +133,23 @@ font-weight: 200;
 
 #article-icon {
   font-size: 600%;
-  color: #808080;
+  color: #56606b;
 }
 
 #title {
   border-radius: .3rem;
 }
 
-#content-lable {
+#title-label {
+  background: rgb(204,204,204);
+  background: linear-gradient(90deg, rgba(204,204,204,1) 0%, rgba(56,56,56,0.4055793991416309) 65%, rgba(204,204,204,1) 100%);
+-webkit-text-fill-color: transparent;
+-webkit-background-clip: text;
+font-size: 150%;
+font-weight: 400;
+}
+
+#content-label {
   background: rgb(204,204,204);
   background: linear-gradient(90deg, rgba(204,204,204,1) 0%, rgba(56,56,56,0.4055793991416309) 65%, rgba(204,204,204,1) 100%);
 -webkit-text-fill-color: transparent;
@@ -148,13 +159,14 @@ font-weight: 400;
 }
 
 #create-article-btn {
-  background-color: #6c757d;
+  background-color: #56606b;
   color: #fff;
 }
 
 #create-article-btn:hover {
   transform: scaleX(1.1);
   background-color: #808080;
+  transition: .5s;
 }
 
 
