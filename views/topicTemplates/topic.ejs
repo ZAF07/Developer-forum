@@ -10,5 +10,11 @@
   <li>Design and style the page</li>
 </ol>
 
+<% articles.forEach((article) => { %>
+  <h4> <%= article.title %> </h4>
+  <small> <%= article.article %> </small>
+<% }) %>
+
+
 
 <%- include('../partials/topicPartials/footer') -%>
