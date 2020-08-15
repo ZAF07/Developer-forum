@@ -136,17 +136,20 @@ font-weight: 200;
   color: #56606b;
 }
 
-#title {
+#title,
+#topic {
   border-radius: .3rem;
 }
 
-#title-label {
+#title-label,
+#topic-label {
   background: rgb(204,204,204);
   background: linear-gradient(90deg, rgba(204,204,204,1) 0%, rgba(56,56,56,0.4055793991416309) 65%, rgba(204,204,204,1) 100%);
 -webkit-text-fill-color: transparent;
 -webkit-background-clip: text;
 font-size: 150%;
 font-weight: 400;
+display: block;
 }
 
 #content-label {

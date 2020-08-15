@@ -65,6 +65,7 @@ exports.topics = async (req, res) => {
   }
 
   await toRender().then(()=> {
+    res.set('Content-Type', 'text/html');
     res.render('topicTemplates/topic', {
       title: topic,
       articles: articles

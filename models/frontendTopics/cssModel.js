@@ -29,3 +29,26 @@ exports.showAllArticles = async () => {
   })
   return articles;
 };
+
+exports.saveNewArticle = async (title, article, createBy) => {
+  let noErr = true;
+
+  const newArticle = new Style({
+    title: title,
+    article: article,
+    createdBy: createBy
+  });
+
+  try {
+    await newArticle.save((err) => {
+      console.log('(CSS Model) Trying to save this ---> ', title,article);
+      if (err) {
+        console.log('(CSSModel saveNewArticle)ERROR TRYING TO SAVE NEW ARTICLE ---> ', err);
+        noErr = err.message
+      }
+    })
+    return noErr;
+  } catch (e) {
+    console.log('(Catch(e)) ---> ', e);
+  }
+};
