@@ -15,83 +15,80 @@ const RubyModel = require('../models/backendTopics/rubyModel');
 
 exports.topics = async (req, res) => {
   const topic = req.params.topic;
+  let articles;
 
-  // if (topic == 'CSS') {
-  //   await CssData.showAll().then(data => {
-  //     console.log('(TopicCTRL) THIS IS THE RETURNES DATA ---> ', data);
-  //     res.send(data)
-  //   })
-  // } else if (topic == 'HTML') {
-  //   await HTMLModel.showAllArticles().then(articles => {
-  //     res.send(articles)
-  //   })
-  // }
 
 
   switch (topic) {
     case 'HTML':
-    await HTMLModel.showAllArticles().then(articles => {
-      console.log('(TopicController)HERE ARE THE ARTICLES for HTML', articles);
-      // res.send(articles);
-      res.render('topicTemplates/topic', {
-        title: topic,
-        articles: articles
-      });
+    await HTMLModel.showAllArticles().then(article => {
+      console.log('(TopicController)HERE ARE THE ARTICLES for HTML', article);
+      articles = article;
+      // res.render('topicTemplates/topic', {
+      //   title: topic,
+      //   articles: articles
+      // });
     })
       break;
     case 'CSS':
-    await CSSModel.showAllArticles().then(articles => {
-      console.log('(TopicController)HERE ARE THE ARTICLES for CSS', articles);
+    await CSSModel.showAllArticles().then(article => {
+      console.log('(TopicController)HERE ARE THE ARTICLES for CSS', article);
+      articles = article;
       // res.send(articles);
-      res.render('topicTemplates/topic', {
-        title: topic,
-        articles: articles
-      });
+      // res.render('topicTemplates/topic', {
+      //   title: topic,
+      //   articles: articles
+      // });
     })
       break;
     case 'Javascript':
-    await JsModel.showAllArticles().then(articles => {
-      console.log('(TopicController)HERE ARE THE ARTICLES for JS', articles);
-      res.render('topicTemplates/topic', {
-        title: topic,
-        articles: articles
-      });
+    await JsModel.showAllArticles().then(article => {
+      console.log('(TopicController)HERE ARE THE ARTICLES for JS', article);
+      articles = article;
+      // res.render('topicTemplates/topic', {
+      //   title: topic,
+      //   articles: articles
+      // });
     })
       break;
     case 'Python':
-    await PythonModel.showAllArticles().then(articles => {
-      console.log('(TopicController) Here are the articles for PYTHON', articles);
-      res.render('topicTemplates/topic', {
-        title: topic,
-        articles: articles
-      })
+    await PythonModel.showAllArticles().then(article => {
+      console.log('(TopicController) Here are the articles for PYTHON', article);
+      articles = article;
+      // res.render('topicTemplates/topic', {
+      //   title: topic,
+      //   articles: articles
+      // });
     })
       break;
     case 'PHP':
-    await PhpModel.showAllArticles().then(articles => {
-      console.log('(TopicController) Here are the articles for PHP', articles);
-      res.render('topicTemplates/topic', {
-        title: topic,
-        articles: articles
-      })
+    await PhpModel.showAllArticles().then(article => {
+      console.log('(TopicController) Here are the articles for PHP', article);
+      articles = article;
+      // res.render('topicTemplates/topic', {
+      //   title: topic,
+      //   articles: articles
+      // });
     })
       break;
       case 'NodeJS':
-      await NodeModel.showAllArticles().then(articles => {
-        console.log('(TopicController) Here are the articles for NODE', articles);
-        res.render('topicTemplates/topic', {
-          title: topic,
-          articles: articles
-        })
+      await NodeModel.showAllArticles().then(article => {
+        console.log('(TopicController) Here are the articles for NODE', article);
+        articles = article;
+        // res.render('topicTemplates/topic', {
+        //   title: topic,
+        //   articles: articles
+        // });
       })
         break;
         case 'Ruby':
-        await RubyModel.showAllArticles().then(articles => {
-          console.log('(TopicController) Here are the articles for RUBY', articles);
-          res.render('topicTemplates/topic', {
-            title: topic,
-            articles: articles
-          })
+        await RubyModel.showAllArticles().then(article => {
+          console.log('(TopicController) Here are the articles for RUBY', article);
+          articles = article;
+          // res.render('topicTemplates/topic', {
+          //   title: topic,
+          //   articles: articles
+          // });
         })
           break;
     default:
@@ -101,4 +98,8 @@ exports.topics = async (req, res) => {
       topic
     })
   }
+  res.render('topicTemplates/topic', {
+    title: topic,
+    articles: articles
+  })
 };
