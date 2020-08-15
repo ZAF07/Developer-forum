@@ -18,7 +18,7 @@ const phpSchema = mongoose.Schema({
 const Php = mongoose.model('php', phpSchema);
 let articles;
 exports.showAllArticles = async () => {
-  Php.find({}, (err, article) => {
+  await Php.find({}, (err, article) => {
     if (err) {
       console.log('(PhpModel) ERROR FINDING ARTICLES ---> ', err);
     } else {
