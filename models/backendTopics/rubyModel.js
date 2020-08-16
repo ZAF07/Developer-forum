@@ -16,9 +16,10 @@ const rubySchema = mongoose.Schema({
 // Define Model
 
 const Ruby = mongoose.model('ruby', rubySchema);
-let articles;
+
 exports.showAllArticles = async () => {
-  Ruby.find({}, (err, article) => {
+  let articles;
+  await Ruby.find({}, (err, article) => {
     if (err) {
       console.log('(RubyModel) ERROR FINDING ARTICLES ---> ', err);
     } else {

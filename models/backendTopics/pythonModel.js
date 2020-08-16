@@ -16,9 +16,10 @@ const pythonSchema = mongoose.Schema({
 // Define Model
 
 const Python = mongoose.model('python', pythonSchema);
-let articles;
+
 exports.showAllArticles = async () => {
-  Python.find({}, (err, article) => {
+  let articles;
+  await Python.find({}, (err, article) => {
     if (err) {
       console.log('(PythonModel) ERROR FINDING ARTICLES ---> ', err);
     } else {

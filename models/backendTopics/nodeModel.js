@@ -16,8 +16,9 @@ const nodeSchema = mongoose.Schema({
 // Define Model
 
 const Node = mongoose.model('node', nodeSchema);
-let articles;
+
 exports.showAllArticles = async () => {
+  let articles;
   await Node.find({}, (err, article) => {
     if (err) {
       console.log('(NodeModel) ERROR FINDING ARTICLES ---> ', err);
