@@ -32,11 +32,11 @@ exports.topics = async (req, res) => {
     case 'HTML':
     await HTMLModel.showAllArticles().then(articles => {
       console.log('(TopicController)HERE ARE THE ARTICLES for HTML', articles);
-      // res.send(articles);
-      res.render('topicTemplates/topic', {
-        title: topic,
-        articles: articles
-      });
+      res.send(articles);
+      // res.render('topicTemplates/topic', {
+      //   title: topic,
+      //   articles: articles
+      // });
     })
       break;
     case 'CSS':

@@ -21,7 +21,8 @@ const findData = axios({
 
 findData.then(res => {
   console.log(res.data);
+  const data = res.data[5];
   const div = document.createElement('p');
-  div.innerHTML = res.data[5].article;
+  div.innerHTML = data.article;
   document.body.appendChild(div);
 })
