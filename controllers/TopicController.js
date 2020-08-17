@@ -80,3 +80,15 @@ exports.topics = async (req, res) => {
     res.redirect(404, 'http://localhost:5000')
   }
 };
+
+exports.specificArticle = (req, res) => {
+
+  const topic = req.params.topic;
+  const id = req.params.id;
+
+  res.render('topicTemplates/specificArticle', {
+    title: 'Specific Article',
+    topic,
+    id
+  })
+};
