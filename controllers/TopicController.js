@@ -6,37 +6,19 @@ const PhpModel = require('../models/backendTopics/phpModel');
 const NodeModel = require('../models/backendTopics/nodeModel');
 const RubyModel = require('../models/backendTopics/rubyModel');
 
-// exports.frontendTopics = (req, res) => {
-//   // res.render('front/front', {
-//   //   title: 'FrontEnd Stuff'
-//   // });
-//   res.send(req.params);
-// };
 
 exports.topics = async (req, res) => {
   const topic = req.params.topic;
-
-  // if (topic == 'CSS') {
-  //   await CssData.showAll().then(data => {
-  //     console.log('(TopicCTRL) THIS IS THE RETURNES DATA ---> ', data);
-  //     res.send(data)
-  //   })
-  // } else if (topic == 'HTML') {
-  //   await HTMLModel.showAllArticles().then(articles => {
-  //     res.send(articles)
-  //   })
-  // }
-
 
   switch (topic) {
     case 'HTML':
     await HTMLModel.showAllArticles().then(articles => {
       console.log('(TopicController)HERE ARE THE ARTICLES for HTML', articles);
-      res.send(articles);
-      // res.render('topicTemplates/topic', {
-      //   title: topic,
-      //   articles: articles
-      // });
+      // res.send(articles);
+      res.render('topicTemplates/topic', {
+        title: topic,
+        articles: articles
+      });
     })
       break;
     case 'CSS':
@@ -95,11 +77,6 @@ exports.topics = async (req, res) => {
         })
           break;
     default:
-    // res.json({
-    //   err: 404,
-    //   msg: 'Create database for topic',
-    //   topic
-    // })
     res.redirect(404, 'http://localhost:5000')
   }
 };
