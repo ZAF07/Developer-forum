@@ -50,7 +50,7 @@ async function findArticle() {
     h4.innerHTML = article.title;
     h4.name = article._id;
     small.innerHTML = article.article.substring(1,100)+'...';
-    link.href= `http://localhost:5000/topic/article/${topic}/` + article._id;
+    link.href= `http://localhost:5000/topic/${topic}/article/` + article._id;
     link.innerHTML = '<small>Read this article</small>';
   
     // Add Elements to DOM
