@@ -16,7 +16,7 @@ const cssSchema = mongoose.Schema({
 // Define Model
 const Style = mongoose.model('cs', cssSchema);
 
-
+// Finding all articles
 exports.showAllArticles = async () => {
   let articles;
   await Style.find({}, (err, article) => {

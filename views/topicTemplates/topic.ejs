@@ -1,7 +1,7 @@
 <%- include('../partials/topicPartials/header') -%>
 <%- include('../partials/nav') -%>
 
-<h1> Topic: <small> <%= title %> </small></h1>
+<h1> Topic: <small class="topic"> <%= title %> </small></h1>
 <h3>This is the page users see when they click on the specific topic on the 'FRONT / BACK' subject page </h3>
 <small>This page would show all articles related to the selected topic together with a hyperlink to read the full article</small>
 <ol>
@@ -9,12 +9,5 @@
   <li>Connect to database and use MoongooseDB to find and display all articles here</li>
   <li>Design and style the page</li>
 </ol>
-
-<% articles.forEach((article) => { %>
-  <h4> <%= article.title %> </h4>
-  <small> <%= article.article %> </small>
-<% }) %>
-
-
 
 <%- include('../partials/topicPartials/footer') -%>
