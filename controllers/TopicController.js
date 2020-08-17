@@ -95,10 +95,11 @@ exports.topics = async (req, res) => {
         })
           break;
     default:
-    res.json({
-      err: 404,
-      msg: 'Create database for topic',
-      topic
-    })
+    // res.json({
+    //   err: 404,
+    //   msg: 'Create database for topic',
+    //   topic
+    // })
+    res.redirect(404, 'http://localhost:5000')
   }
 };
