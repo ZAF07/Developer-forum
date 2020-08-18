@@ -30,6 +30,9 @@ async function findArticle() {
   await findData.then(res => {
     console.log(res.data);
 
+    // Got to figure this out -> (sSometimes article doesnt load) so i reload the page if article wasnt loaded
+    if (!res.data) location.reload();
+    
     // Get the Root DIV
     const div = document.querySelector('#root');
 
