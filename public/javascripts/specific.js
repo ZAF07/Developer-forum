@@ -1,12 +1,6 @@
 const id = document.querySelector('.hiddenId').innerHTML;
 const topic = document.querySelector('.hiddenTopic').innerHTML;
 
-// const getOneArticle = axios({
-//     method: 'GET',
-//     url: "`http://localhost:5000/database/NodeJS/${id}`"
-// })
-
-
 
 const retrieveArticle = async () => {
     const getOneArticle = axios.get(`http://localhost:5000/database/${topic}/${id}`);
