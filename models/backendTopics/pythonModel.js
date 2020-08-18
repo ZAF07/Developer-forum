@@ -28,3 +28,24 @@ exports.showAllArticles = async () => {
   })
   return articles;
 };
+
+
+// Get one Article
+exports.getOneArticle = (async (id) => {
+  let article;
+  
+  try {
+    await Python.find({_id:id}, (err, returnedArticle) => {
+      if (err) {
+        console.log('(PythonModel FindOne error) ---> ', err);
+        article = 'error haha';
+      } else {
+        article = returnedArticle;
+      }
+    })
+  } catch (err) {
+    console.log('(Catch Error PythonModel FindOne) ---> ', err);
+    article = 'Catch Error ---> ' + err;
+  }
+  return article;
+  })

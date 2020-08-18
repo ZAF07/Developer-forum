@@ -28,3 +28,24 @@ exports.showAllArticles = async () => {
   })
   return articles;
 };
+
+
+// Get one Article
+exports.getOneArticle = (async (id) => {
+  let article;
+  
+  try {
+    await Ruby.find({_id:id}, (err, returnedArticle) => {
+      if (err) {
+        console.log('(RubyModel FindOne error) ---> ', err);
+        article = 'error haha';
+      } else {
+        article = returnedArticle;
+      }
+    })
+  } catch (err) {
+    console.log('(Catch Error RubyModel FindOne) ---> ', err);
+    article = 'Catch Error ---> ' + err;
+  }
+  return article;
+  })
