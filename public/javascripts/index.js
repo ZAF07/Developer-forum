@@ -1,18 +1,3 @@
-// async function getThis() {
-//   const here = await axios({
-//     url:'http://localhost:5000/topic/HTML',
-//     method: 'GET'
-//   })
-//   console.log(here.data);
-//   const allData =
-//
-//   const div = document.body.createElement('div');
-//   div.innerHTML =
-//   document.body.appendChild(div)
-// }
-//
-// getThis();
-
 async function getTopic() {
   const topic = await document.querySelector('.topic').innerHTML;
 
@@ -32,7 +17,7 @@ async function findArticle() {
 
     // Got to figure this out -> (sSometimes article doesnt load) so i reload the page if article wasnt loaded
     if (!res.data) location.reload();
-    
+
     // Get the Root DIV
     const div = document.querySelector('#root');
 

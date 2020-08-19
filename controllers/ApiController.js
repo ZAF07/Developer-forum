@@ -61,49 +61,7 @@ exports.getOneArticle = async (req, res) => {
     const id = req.params.id;
     const topic = req.params.topic;
     console.log('THIS IS THE PARAMS FOR GET ONE ARTICLE --> ', id, topic);
-    // await NodeModel.getOneArticle(id).then(article => {
-    //     res.json(article);
-    // })
-    // switch (topic) {
-    //     case 'HTML':
-    //         await HTMLModel.getOneArticle(id).then(article => {
-    //             res.json(article);
-    //         })
-    //         break;    
-    //     case 'CSS':
-    //         await CSSModel.getOneArticle(id).then(article => {
-    //             res.json(article);
-    //         })
-    //         break; 
-    //     case 'Javascript':
-    //         await JsModel.getOneArticle(id).then(article => {
-    //             res.json(article);
-    //         })
-    //         break;
-    //     case 'Python':
-    //         await PythonModel.getOneArticle(id).then(article => {
-    //             res.json(article);
-    //         })
-    //         break;
-    //     case 'PHP':
-    //         await PhpModel.getOneArticle(id).then(article => {
-    //             res.json(article);
-    //         })
-    //         break;
-    //     case 'Ruby':
-    //         await RubyModel.getOneArticle(id).then(article => {
-    //             res.json(article);
-    //         })
-    //         break;
-    //     case 'NodeJs':
-    //         await NodeModel.getOneArticle(id).then(article => {
-    //             res.json(article);
-    //         })
-    //         break; 
-    //         default:
-    //             res.redirect('/');
-    //             break;
-    //         }
+
 
             switch (topic) {
                 case 'HTML':
