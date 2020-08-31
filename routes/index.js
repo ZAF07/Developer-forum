@@ -35,6 +35,7 @@ router.get('/:subject', RootController.frontOrBack);
 router.post('/createarticle', (req,res) => {
   res.send(req.body)
   // Here i need to create a Model Controller to handle and save the data recieved
+  // Then show a page telling that saved successfully or not
 })
 
 module.exports = router;
