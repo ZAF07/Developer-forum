@@ -18,12 +18,14 @@ const retrieveArticle = async () => {
         console.log('THIS IS FROM AXIOS --->', articleArr);
         articleArr.forEach(article => {
             console.log(article);
-            const h4 = document.createElement('h4');
+            const h2 = document.createElement('h2');
             const p = document.createElement('p');
-            h4.innerHTML = article.title;
+            const br = document.createElement('br')
+            h2.innerHTML = article.title;
             p.innerHTML = article.article;
     
-            root.appendChild(h4);
+            root.appendChild(h2);
+            root.append(br)
             root.appendChild(p);
     
         });

@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 const RootController = require('../controllers/RootController');
+const TopicController = require('../controllers/TopicController');
+const RubyController = require('../models/backendTopics/rubyModel');
 
 /* GET home page. */
 // router.get('/',  async function(req, res, next) {
@@ -32,10 +34,12 @@ router.get('/:subject', RootController.frontOrBack);
 
 // POST handler
 
-router.post('/createarticle', (req,res) => {
-  res.send(req.body)
-  // Here i need to create a Model Controller to handle and save the data recieved
-  // Then show a page telling that saved successfully or not
-})
+// router.post('/createarticle', (req,res) => {
+//   res.send(req.body)
+//   // Here i need to create a Model Controller to handle and save the data recieved
+//   // Then show a page telling that saved successfully or not
+// })
+
+router.post('/createarticle', TopicController.saveThisArticle);
 
 module.exports = router;

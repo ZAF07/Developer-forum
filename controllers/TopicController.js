@@ -92,3 +92,11 @@ exports.specificArticle = (req, res) => {
     id
   })
 };
+
+exports.saveThisArticle = (req, res) => {
+
+  RubyModel.saveArticle(req.body.title, req.body.content).then(response => {
+    res.send(response)
+  })
+
+};
