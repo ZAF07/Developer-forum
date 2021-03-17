@@ -1,3 +1,5 @@
+// Links to topic.ejs
+
 async function getTopic() {
   const topic = await document.querySelector('.topic').innerHTML;
 
@@ -30,6 +32,7 @@ async function findArticle() {
     const h4 = document.createElement('h4');
     const small = document.createElement('small');
     const link = document.createElement('a');
+    const br = document.createElement('hr');
   
     // Add Class to Elements
     // p.classList = 'jumbotron'
@@ -45,6 +48,7 @@ async function findArticle() {
     div.appendChild(h4);
     div.appendChild(small);
     div.appendChild(link)
+    div.appendChild(br)
     });
 
 

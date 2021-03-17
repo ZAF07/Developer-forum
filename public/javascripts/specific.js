@@ -1,3 +1,5 @@
+// Links to specificArticle.ejs
+
 const id = document.querySelector('.hiddenId').innerHTML;
 const topic = document.querySelector('.hiddenTopic').innerHTML;
 
