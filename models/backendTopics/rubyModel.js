@@ -51,19 +51,26 @@ exports.getOneArticle = (async (id) => {
   })
 
   // Save Article
-exports.saveArticle = async (title, article) => {
+exports.saveArticle = (async (title, article) => {
   let saveResult;
   const articleRecieved = new Ruby ({
-    title: title,
+    title: title ,
     article: article
   });
 
+  // ERROR WORKS BUT WHEN SAVED NOTHING RETURNED 
   await articleRecieved.save((err) => {
-    if (err) {
+    if (!err) {
+      saveResult = 'yAHOO';
+      console.log('RUBY MODEL SAVED');
+      
+    } else {
       console.log('RUBY MODEL. Save error --> ', err);
-      saveResult = false;
+      saveResult = err.message;
     }
+    
   })
 
+
   return saveResult;
-};
+});
