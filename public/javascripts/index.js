@@ -29,10 +29,10 @@ async function findArticle() {
     articlesArr.forEach(article => {
       console.log('THIS IS THE ID ---> ', article._id);
     // Create Elements
+    const container = document.createElement('div');
     const h4 = document.createElement('h4');
     const small = document.createElement('small');
     const link = document.createElement('a');
-    const br = document.createElement('hr');
   
     // Add Class to Elements
     // p.classList = 'jumbotron'
@@ -44,11 +44,20 @@ async function findArticle() {
     link.href= `http://localhost:5000/topic/${topic}/article/`+article._id;
     link.innerHTML = '<small>Read this article</small>';
   
+
+    // Populate the container
+    container.appendChild(h4)
+    container.appendChild(h4);
+    container.appendChild(small);
+    container.appendChild(link);
+    container.className = 'card p-3  shadow-lg p-3 mb-5 bg-white rounded';
+    
     // Add Elements to DOM
-    div.appendChild(h4);
-    div.appendChild(small);
-    div.appendChild(link)
-    div.appendChild(br)
+    // div.appendChild(h4);
+    // div.appendChild(small);
+    // div.appendChild(link)
+    // div.appendChild(br)
+    div.appendChild(container);
     });
 
 
@@ -56,7 +65,4 @@ async function findArticle() {
 }
 
 findArticle();
-
-
-
 
