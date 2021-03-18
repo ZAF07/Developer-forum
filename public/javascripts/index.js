@@ -1,11 +1,11 @@
 // Links to topic.ejs
 
-async function getTopic() {
-  const topic = await document.querySelector('.topic').innerHTML;
+// async function getTopic() {
+//   const topic = await document.querySelector('.topic').innerHTML;
 
-  console.log('This is the topic', topic);  
-}
-getTopic();
+//   console.log('This is the topic', topic);  
+// }
+// getTopic();
 
 async function findArticle() {
   const topic = await document.querySelector('.topic').innerHTML;
@@ -40,7 +40,7 @@ async function findArticle() {
     // Populate Elements
     h4.innerHTML = article.title;
     h4.name = article._id;
-    small.innerHTML = article.article.substring(1,100)+'...';
+    small.innerHTML = article.article.substring(0,100)+'...';
     link.href= `http://localhost:5000/topic/${topic}/article/`+article._id;
     link.innerHTML = '<small>Read this article</small>';
   
