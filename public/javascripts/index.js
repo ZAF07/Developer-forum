@@ -30,12 +30,15 @@ async function findArticle() {
       console.log('THIS IS THE ID ---> ', article._id);
     // Create Elements
     const container = document.createElement('div');
+    const innerContainer = document.createElement('div');
     const h4 = document.createElement('h4');
     const small = document.createElement('small');
     const link = document.createElement('a');
   
     // Add Class to Elements
     // p.classList = 'jumbotron'
+    container.className = 'card p-3  shadow-lg p-3 mb-5 bg-white rounded';
+    innerContainer.className = 'container';
   
     // Populate Elements
     h4.innerHTML = article.title;
@@ -50,7 +53,7 @@ async function findArticle() {
     container.appendChild(h4);
     container.appendChild(small);
     container.appendChild(link);
-    container.className = 'card p-3  shadow-lg p-3 mb-5 bg-white rounded';
+    
     
     // Add Elements to DOM
     // div.appendChild(h4);

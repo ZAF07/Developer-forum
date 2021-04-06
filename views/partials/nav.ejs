@@ -10,13 +10,20 @@
         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/signup">Sign Up</a>
+        <a class="nav-link" href="/signup">Sign In</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/createarticle">Create Article</a>
       </li>
-      <a class="nav-link" href="#">Sign In</a>
     </ul>
   </div>
   
+
+  <!-- DO THIS WHEN CHECKING IF USER SIGNED IN OR NOT -->
+ <% if (title != 'Create Article Page') { %>
+  <li>Signed in</li>
+<% } else { %>
+<li>Logged out</li>
+<% } %>
 </nav>
+<%= title  %>

@@ -13,7 +13,7 @@ const retrieveArticle = async () => {
         if (!res.data) location.reload();
     
         // Get the root div
-        const root = document.querySelector('.root');
+        const root = document.getElementById('root');
     
         // Returned articles in array
         const articleArr = res.data;
