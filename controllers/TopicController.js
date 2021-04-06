@@ -95,11 +95,18 @@ exports.specificArticle = (req, res) => {
 
 // So far it only saves into the ruby model 
 // Success message not showing , then redirect to home page or something
-exports.saveThisArticle = (req, res) => {
+// exports.saveThisArticle = (req, res) => {
 
-  RubyModel.saveArticle(req.body.title, req.body.content).then(response => {
-    console.log('Hello', response);
-    res.send(response)
-  })
+//   RubyModel.saveArticle(req.body.title, req.body.content).then(response => {
+//     // console.log('Hello', response);
+//     if (response) {
+//       console.log('error', err);
+//     } else {
+//       console.log('Succeed');
+//     }
+//     res.redirect('/')
+//   });
 
-};
+// };
+
+exports.saveThisArticle = RubyModel.saveArticle;

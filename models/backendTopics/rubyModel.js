@@ -13,6 +13,11 @@ const rubySchema = mongoose.Schema({
   createdBy: String
 });
 
+rubySchema.pre('save', () => {
+  console.log('eee');
+  next();
+})
+
 // Define Model
 
 const Ruby = mongoose.model('ruby', rubySchema);
@@ -34,6 +39,7 @@ exports.showAllArticles = async () => {
 exports.getOneArticle = (async (id) => {
   let article;
   
+
   try {
     await Ruby.find({_id:id}, (err, returnedArticle) => {
       if (err) {
@@ -51,26 +57,42 @@ exports.getOneArticle = (async (id) => {
   })
 
   // Save Article
-exports.saveArticle = (async (title, article) => {
-  let saveResult;
-  const articleRecieved = new Ruby ({
-    title: title ,
-    article: article
-  });
+// exports.saveArticle = async (title, article) => {
+//   let saveResult;
+//   const articleRecieved = new Ruby ({
+//     title: title ,
+//     article: article
+//   });
 
   // ERROR WORKS BUT WHEN SAVED NOTHING RETURNED 
-  await articleRecieved.save((err) => {
-    if (!err) {
-      saveResult = 'yAHOO';
-      console.log('RUBY MODEL SAVED');
+
+
+//    await articleRecieved.save((err,article) => {
+//     if (!err) {
+//       console.log('from ruby model save -> ', article);
+//       saveResult = 'article';
+//     } else {
+//       console.log('fROM RUBY model not saved --> ', err);
       
+//       saveResult = err ;
+//      }
+//   })
+//   return saveResult;
+// };
+
+exports.saveArticle = async (req, res) => {
+
+  console.log(req.body);
+  const articleRecieved = new Ruby ({
+    title: req.body.title,
+    article: req.body.content
+  });
+
+  await articleRecieved.save((err, article) => {
+    if (!err) {
+      res.redirect('/')
     } else {
-      console.log('RUBY MODEL. Save error --> ', err);
-      saveResult = err.message;
+      res.send(err.message)
     }
-    
   })
-
-
-  return saveResult;
-});
+}
