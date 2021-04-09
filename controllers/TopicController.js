@@ -33,14 +33,25 @@ exports.topics = async (req, res) => {
     })
       break;
     case 'CSS':
-    await CSSModel.showAllArticles().then(articles => {
-      console.log('(TopicController)HERE ARE THE ARTICLES for CSS', articles);
-      // res.send(articles);
-      res.render('topicTemplates/topic', {
-        title: topic,
-        articles: articles
-      });
-    })
+      CSSModel.Style.find({}, (err, retArticle) => {
+        if (!err) {
+          const articles = retArticle;
+          res.render('topicTemplates/topic', {
+            title: topic,
+            articles
+          })
+        }
+      })
+
+    //          *******  THIS IS BEFORE THE FIX *******
+    // await CSSModel.showAllArticles().then(articles => {
+    //   console.log('(TopicController)HERE ARE THE ARTICLES for CSS', articles);
+    //   // res.send(articles);
+    //   res.render('topicTemplates/topic', {
+    //     title: topic,
+    //     articles: articles
+    //   });
+    // })
       break;
     case 'Javascript':
     await JsModel.showAllArticles().then(articles => {

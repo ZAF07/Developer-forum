@@ -49,7 +49,7 @@ async function findArticle() {
   
 
     // Populate the container
-    container.appendChild(h4)
+    // container.appendChild(h4)
     container.appendChild(h4);
     container.appendChild(small);
     container.appendChild(link);

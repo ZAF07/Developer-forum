@@ -17,10 +17,18 @@ exports.retrieveArticles = async (req,res) => {
         })
           break;
         case 'CSS':
-        await CSSModel.showAllArticles().then(articles => {
-          console.log('(TopicController)HERE ARE THE ARTICLES for CSS', articles);
-          res.send(articles);
+        await CSSModel.Style.find({}, (err, retArticle) => {
+          if (!err) {
+            const articles = retArticle;
+            res.send(articles);
+          }
         })
+
+        //      ******* Before Fix *******
+        // await CSSModel.showAllArticles().then(articles => {
+        //   console.log('(TopicController)HERE ARE THE ARTICLES for CSS', articles);
+        //   res.send(articles);
+        // })
           break;
         case 'Javascript':
         await JsModel.showAllArticles().then(articles => {
@@ -70,9 +78,16 @@ exports.getOneArticle = async (req, res) => {
                     })
                   break;
                 case 'CSS':
-                    await CSSModel.getOneArticle(id).then(article => {
-                        res.json(article);
-                    })
+
+                await CSSModel.Style.find({_id: id} , (err, article) => {
+                  if (!err) {
+                    res.json(article);
+                  }
+                })
+                  //    ******* BEFORE FIX *******
+                    // await CSSModel.getOneArticle(id).then(article => {
+                    //     res.json(article);
+                    // })
                   break;
                 case 'Javascript':
                     await JsModel.getOneArticle(id).then(article => {

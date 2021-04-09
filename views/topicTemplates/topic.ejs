@@ -1,3 +1,4 @@
+
 <%- include('../partials/topicPartials/header') -%>
 <%- include('../partials/nav') -%>
 
@@ -15,6 +16,16 @@
 
 <div id="root" class="container">
 
+</div>
+
+<div>
+  <% articles.forEach(article => { %>
+    <div class="card p-3  shadow-lg p-3 mb-5 bg-white rounded">
+      <h1><%= article.title %></h1>
+      <p><%= article.article  %></p>
+      <small><%= article.id %></small>
+    </div>
+ <% }); %>
 </div>
 
 <%- include('../partials/topicPartials/footer') -%>
