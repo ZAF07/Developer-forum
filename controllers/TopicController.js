@@ -9,7 +9,18 @@ const RubyModel = require('../models/backendTopics/rubyModel');
 
 exports.topics = async (req, res) => {
   const topic = req.params.topic;
-
+  // let articles;
+  //   RubyModel.Ruby.find({}, (err, article) => {
+  //     if (!err) {
+        
+  //       res.render('topicTemplates/topic', {
+  //         title: topic,
+  //         articles: article
+  //       })
+  //     } else {
+  //       res.status(404).send(err);
+  //     }
+  //   })
   switch (topic) {
     case 'HTML':
     await HTMLModel.showAllArticles().then(articles => {
@@ -95,18 +106,23 @@ exports.specificArticle = (req, res) => {
 
 // So far it only saves into the ruby model 
 // Success message not showing , then redirect to home page or something
-// exports.saveThisArticle = (req, res) => {
+exports.saveThisArticle = (req, res) => {
 
-//   RubyModel.saveArticle(req.body.title, req.body.content).then(response => {
-//     // console.log('Hello', response);
-//     if (response) {
-//       console.log('error', err);
-//     } else {
-//       console.log('Succeed');
-//     }
-//     res.redirect('/')
-//   });
+  // res.send(req.params)
+  RubyModel.saveArticle(req.body.title, req.body.content).then(response => {
+    console.log('Hello', response);
+    if (response) {
+      console.log('error', err);
+    } else {
+      console.log('Succeed');
+    }
+    res.redirect('/')
+  });
 
-// };
+};
 
-exports.saveThisArticle = RubyModel.saveArticle;
+// exports.saveThisArticleNode = NodeModel.saveArticle;
+// exports.saveThisArticleRuby = RubyModel.saveArticle;
+
+exports.savethisArticle
+

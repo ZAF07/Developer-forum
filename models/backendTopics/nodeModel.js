@@ -49,3 +49,21 @@ try {
 }
 return article;
 })
+
+// Save Article
+exports.saveArticle = async (req, res) => {
+
+  console.log(req.body);
+  const articleRecieved = new Node ({
+    title: req.body.title,
+    article: req.body.content
+  });
+
+  await articleRecieved.save((err, article) => {
+    if (!err) {
+      res.redirect('/')
+    } else {
+      res.send(err.message)
+    }
+  })
+}

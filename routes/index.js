@@ -40,6 +40,18 @@ router.get('/:subject', RootController.frontOrBack);
 //   // Then show a page telling that saved successfully or not
 // })
 
-router.post('/createarticle', TopicController.saveThisArticle);
+
+router.post('/createarticle/:topic', TopicController.saveThisArticle);
+// router.post('/createarticle/:topic', (req,res) => {
+//     const here = req.params.topic;
+
+//     if (here === 'angel') {
+//         TopicController.saveThisArticleNode()
+//     } else {
+//         res.send('nope')
+//     }
+    
+
+// })
 
 module.exports = router;

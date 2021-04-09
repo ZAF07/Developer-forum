@@ -19,8 +19,10 @@ rubySchema.pre('save', () => {
 })
 
 // Define Model
-
+// Should just export this and make queries on the controllers instead
+// exports.Ruby = mongoose.model('ruby', rubySchema);
 const Ruby = mongoose.model('ruby', rubySchema);
+
 
 exports.showAllArticles = async () => {
   let articles;
@@ -81,7 +83,7 @@ exports.getOneArticle = (async (id) => {
 // };
 
 exports.saveArticle = async (req, res) => {
-
+let ha;
   console.log(req.body);
   const articleRecieved = new Ruby ({
     title: req.body.title,
@@ -93,6 +95,24 @@ exports.saveArticle = async (req, res) => {
       res.redirect('/')
     } else {
       res.send(err.message)
+      ha = err.message
     }
   })
 }
+
+// exports.saveArticle = async (title, article) => {
+
+//   const articleRecieved = new Ruby ({
+//         title,
+//         article
+//       });
+
+//   await articleRecieved.save((err, book) => {
+//     if (!err) {
+//       return book
+//     } else {
+//       return err
+//     }
+//   });
+  
+// }
