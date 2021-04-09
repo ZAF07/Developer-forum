@@ -9,16 +9,6 @@ const RubyModel = require('../models/backendTopics/rubyModel');
 
 exports.topics = async (req, res) => {
   const topic = req.params.topic;
-<<<<<<< HEAD
-  let articles;
-
-  const toRender = async () => {
-    switch (topic) {
-      case 'HTML':
-      await HTMLModel.showAllArticles().then(article => {
-        console.log('(TopicController)HERE ARE THE ARTICLES for HTML', article);
-        articles = article;
-=======
   // let articles;
   //   RubyModel.Ruby.find({}, (err, article) => {
   //     if (!err) {
@@ -67,7 +57,6 @@ exports.topics = async (req, res) => {
       res.render('topicTemplates/topic', {
         title: topic,
         articles: articles
->>>>>>> testhere
       })
         break;
       case 'CSS':
@@ -100,24 +89,8 @@ exports.topics = async (req, res) => {
           articles = article;
         })
           break;
-<<<<<<< HEAD
-          case 'Ruby':
-          await RubyModel.showAllArticles().then(article => {
-            console.log('(TopicController) Here are the articles for RUBY', article);
-            articles = article;
-          })
-            break;
-      default:
-      res.json({
-        err: 404,
-        msg: 'Create database for topic',
-        topic
-      })
-    }
-=======
     default:
     res.redirect(404, 'http://localhost:5000')
->>>>>>> testhere
   }
 
   await toRender().then(()=> {
