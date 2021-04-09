@@ -37,11 +37,6 @@ router.get('/:subject', RootController.frontOrBack);
 // router.post('/createarticle', (req,res) => {
 //   res.send(req.body)
 //   // Here i need to create a Model Controller to handle and save the data recieved
-<<<<<<< HEAD
-// })
-
-router.post('/createarticle', RootController.createNewArticle);
-=======
 //   // Then show a page telling that saved successfully or not
 // })
 
@@ -58,6 +53,5 @@ router.post('/createarticle/:topic', TopicController.saveThisArticle);
     
 
 // })
->>>>>>> testhere
 
 module.exports = router;

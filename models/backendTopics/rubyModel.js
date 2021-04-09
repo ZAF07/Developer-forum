@@ -23,10 +23,6 @@ rubySchema.pre('save', () => {
 // exports.Ruby = mongoose.model('ruby', rubySchema);
 const Ruby = mongoose.model('ruby', rubySchema);
 
-<<<<<<< HEAD
-=======
-
->>>>>>> testhere
 exports.showAllArticles = async () => {
   let articles;
   await Ruby.find({}, (err, article) => {
@@ -39,7 +35,7 @@ exports.showAllArticles = async () => {
   return articles;
 };
 
-<<<<<<< HEAD
+
 exports.saveNewArticle = async (title, article, createBy) => {
   let noErr = true;
 
@@ -62,7 +58,7 @@ exports.saveNewArticle = async (title, article, createBy) => {
     console.log('(Catch(e)) ---> ', e);
   }
 };
-=======
+
 
 // Get one Article
 exports.getOneArticle = (async (id) => {
@@ -143,4 +139,4 @@ let ha;
 //   });
   
 // }
->>>>>>> testhere
+

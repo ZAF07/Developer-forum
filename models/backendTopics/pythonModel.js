@@ -29,30 +29,6 @@ exports.showAllArticles = async () => {
   return articles;
 };
 
-<<<<<<< HEAD
-exports.saveNewArticle = async (title, article, createBy) => {
-  let noErr = true;
-
-  const newArticle = new Python({
-    title: title,
-    article: article,
-    createdBy: createBy
-  });
-
-  try {
-    await newArticle.save((err) => {
-      console.log('(Python Model) Trying to save this ---> ', title,article);
-      if (err) {
-        console.log('(PythonModel saveNewArticle)ERROR TRYING TO SAVE NEW ARTICLE ---> ', err);
-        noErr = err.message
-      }
-    })
-    return noErr;
-  } catch (e) {
-    console.log('(Catch(e)) ---> ', e);
-  }
-};
-=======
 
 // Get one Article
 exports.getOneArticle = (async (id) => {
@@ -73,4 +49,3 @@ exports.getOneArticle = (async (id) => {
   }
   return article;
   })
->>>>>>> testhere

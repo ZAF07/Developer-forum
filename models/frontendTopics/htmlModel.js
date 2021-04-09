@@ -35,30 +35,6 @@ exports.showAllArticles = async () => {
   }
 };
 
-<<<<<<< HEAD
-exports.saveNewArticle = async (title, article, createBy) => {
-  let noErr = true;
-
-  const newArticle = new HtmlModel({
-    title: title,
-    article: article,
-    createdBy: createBy
-  });
-
-  try {
-    await newArticle.save((err) => {
-      console.log('(HTML Model) Trying to save this ---> ', title,article);
-      if (err) {
-        console.log('(HTMLModel saveNewArticle)ERROR TRYING TO SAVE NEW ARTICLE ---> ', err);
-        noErr = err.message
-      }
-    })
-    return noErr;
-  } catch (e) {
-    console.log('(Catch(e)) ---> ', e);
-  }
-};
-=======
 
 // Get one Article
 exports.getOneArticle = (async (id) => {
@@ -79,4 +55,3 @@ exports.getOneArticle = (async (id) => {
   }
   return article;
   })
->>>>>>> testhere

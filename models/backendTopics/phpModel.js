@@ -18,10 +18,6 @@ const phpSchema = mongoose.Schema({
 const Php = mongoose.model('php', phpSchema);
 
 exports.showAllArticles = async () => {
-<<<<<<< HEAD
-  let articles;
-=======
->>>>>>> testhere
   await Php.find({}, (err, article) => {
     if (err) {
       console.log('(PhpModel) ERROR FINDING ARTICLES ---> ', err);
@@ -32,30 +28,6 @@ exports.showAllArticles = async () => {
   return articles;
 };
 
-<<<<<<< HEAD
-exports.saveNewArticle = async (title, article, createBy) => {
-  let noErr = true;
-
-  const newArticle = new Php({
-    title: title,
-    article: article,
-    createdBy: createBy
-  });
-
-  try {
-    await newArticle.save((err) => {
-      console.log('(Php Model) Trying to save this ---> ', title,article);
-      if (err) {
-        console.log('(PhpModel saveNewArticle)ERROR TRYING TO SAVE NEW ARTICLE ---> ', err);
-        noErr = err.message
-      }
-    })
-    return noErr;
-  } catch (e) {
-    console.log('(Catch(e)) ---> ', e);
-  }
-};
-=======
 // Get one Article
 exports.getOneArticle = (async (id) => {
   let article;
@@ -75,4 +47,3 @@ exports.getOneArticle = (async (id) => {
   }
   return article;
   })
->>>>>>> testhere

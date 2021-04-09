@@ -16,11 +16,7 @@ const nodeSchema = mongoose.Schema({
 // Define Model
 const Node = mongoose.model('node', nodeSchema);
 
-<<<<<<< HEAD
-
-=======
 // Get all Article
->>>>>>> testhere
 exports.showAllArticles = async () => {
   let articles;
   await Node.find({}, (err, article) => {
@@ -33,30 +29,6 @@ exports.showAllArticles = async () => {
   return articles;
 };
 
-<<<<<<< HEAD
-exports.saveNewArticle = async (title, article, createBy) => {
-  let noErr = true;
-
-  const newArticle = new Node({
-    title: title,
-    article: article,
-    createdBy: createBy
-  });
-
-  try {
-    await newArticle.save((err) => {
-      console.log('(Node Model) Trying to save this ---> ', title,article);
-      if (err) {
-        console.log('(NodeModel saveNewArticle)ERROR TRYING TO SAVE NEW ARTICLE ---> ', err);
-        noErr = err.message
-      }
-    })
-    return noErr;
-  } catch (e) {
-    console.log('(Catch(e)) ---> ', e);
-  }
-};
-=======
 
 // Get one Article
 exports.getOneArticle = (async (id) => {
@@ -95,4 +67,3 @@ exports.saveArticle = async (req, res) => {
     }
   })
 }
->>>>>>> testhere
