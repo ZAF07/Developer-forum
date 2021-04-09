@@ -113,6 +113,13 @@ body {
   transition: .5s;
 }
 
+.sign-up-msg {
+  color: grey;
+}
+.sign-up-msg:hover {
+  color: black;
+}
+
 /* ------- Create Article Page styles ------- */
 
 #createArticle-container {
@@ -125,6 +132,7 @@ body {
 #createArticle-header {
   background: rgb(204,204,204);
   background: linear-gradient(90deg, rgba(204,204,204,1) 0%, rgba(56,56,56,0.4055793991416309) 65%, rgba(204,204,204,1) 100%);
+  background-clip: text;
 -webkit-text-fill-color: transparent;
 -webkit-background-clip: text;
 font-size: 350%;
@@ -145,6 +153,7 @@ font-weight: 200;
 #topic-label {
   background: rgb(204,204,204);
   background: linear-gradient(90deg, rgba(204,204,204,1) 0%, rgba(56,56,56,0.4055793991416309) 65%, rgba(204,204,204,1) 100%);
+  background-clip: text;
 -webkit-text-fill-color: transparent;
 -webkit-background-clip: text;
 font-size: 150%;
@@ -155,6 +164,7 @@ display: block;
 #content-label {
   background: rgb(204,204,204);
   background: linear-gradient(90deg, rgba(204,204,204,1) 0%, rgba(56,56,56,0.4055793991416309) 65%, rgba(204,204,204,1) 100%);
+  background-clip: text;
 -webkit-text-fill-color: transparent;
 -webkit-background-clip: text;
 font-size: 150%;
@@ -170,6 +180,10 @@ font-weight: 400;
   transform: scaleX(1.1);
   background-color: #808080;
   transition: .5s;
+}
+
+#form-group-title-label {
+  display: inline-grid;
 }
 
 

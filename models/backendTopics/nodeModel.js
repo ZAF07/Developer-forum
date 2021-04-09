@@ -14,10 +14,13 @@ const nodeSchema = mongoose.Schema({
 });
 
 // Define Model
-
 const Node = mongoose.model('node', nodeSchema);
 
+<<<<<<< HEAD
 
+=======
+// Get all Article
+>>>>>>> testhere
 exports.showAllArticles = async () => {
   let articles;
   await Node.find({}, (err, article) => {
@@ -30,6 +33,7 @@ exports.showAllArticles = async () => {
   return articles;
 };
 
+<<<<<<< HEAD
 exports.saveNewArticle = async (title, article, createBy) => {
   let noErr = true;
 
@@ -52,3 +56,43 @@ exports.saveNewArticle = async (title, article, createBy) => {
     console.log('(Catch(e)) ---> ', e);
   }
 };
+=======
+
+// Get one Article
+exports.getOneArticle = (async (id) => {
+let article;
+
+try {
+  await Node.find({_id:id}, (err, returnedArticle) => {
+    if (err) {
+      console.log('(NodeModel FindOne error) ---> ', err);
+      article = 'error haha';
+    } else {
+      article = returnedArticle;
+    }
+  })
+} catch (err) {
+  console.log('(Catch Error NodeModel FindOne) ---> ', err);
+  article = 'Catch Error ---> ' + err;
+}
+return article;
+})
+
+// Save Article
+exports.saveArticle = async (req, res) => {
+
+  console.log(req.body);
+  const articleRecieved = new Node ({
+    title: req.body.title,
+    article: req.body.content
+  });
+
+  await articleRecieved.save((err, article) => {
+    if (!err) {
+      res.redirect('/')
+    } else {
+      res.send(err.message)
+    }
+  })
+}
+>>>>>>> testhere

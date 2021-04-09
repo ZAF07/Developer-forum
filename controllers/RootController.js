@@ -13,8 +13,11 @@ exports.homePage = (req, res) => {
 };
 
 exports.signUp = (req, res) => {
+  const d = new Date();
+  const y = d.getFullYear();
   res.render('rootsTemplates/sign', {
-    title: 'Sign Up Page'
+    title: 'Sign In Page',
+    year: y
   });
 };
 

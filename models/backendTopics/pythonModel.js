@@ -29,6 +29,7 @@ exports.showAllArticles = async () => {
   return articles;
 };
 
+<<<<<<< HEAD
 exports.saveNewArticle = async (title, article, createBy) => {
   let noErr = true;
 
@@ -51,3 +52,25 @@ exports.saveNewArticle = async (title, article, createBy) => {
     console.log('(Catch(e)) ---> ', e);
   }
 };
+=======
+
+// Get one Article
+exports.getOneArticle = (async (id) => {
+  let article;
+  
+  try {
+    await Python.find({_id:id}, (err, returnedArticle) => {
+      if (err) {
+        console.log('(PythonModel FindOne error) ---> ', err);
+        article = 'error haha';
+      } else {
+        article = returnedArticle;
+      }
+    })
+  } catch (err) {
+    console.log('(Catch Error PythonModel FindOne) ---> ', err);
+    article = 'Catch Error ---> ' + err;
+  }
+  return article;
+  })
+>>>>>>> testhere

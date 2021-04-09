@@ -9,6 +9,7 @@ const RubyModel = require('../models/backendTopics/rubyModel');
 
 exports.topics = async (req, res) => {
   const topic = req.params.topic;
+<<<<<<< HEAD
   let articles;
 
   const toRender = async () => {
@@ -17,6 +18,56 @@ exports.topics = async (req, res) => {
       await HTMLModel.showAllArticles().then(article => {
         console.log('(TopicController)HERE ARE THE ARTICLES for HTML', article);
         articles = article;
+=======
+  // let articles;
+  //   RubyModel.Ruby.find({}, (err, article) => {
+  //     if (!err) {
+        
+  //       res.render('topicTemplates/topic', {
+  //         title: topic,
+  //         articles: article
+  //       })
+  //     } else {
+  //       res.status(404).send(err);
+  //     }
+  //   })
+  switch (topic) {
+    case 'HTML':
+    await HTMLModel.showAllArticles().then(articles => {
+      console.log('(TopicController)HERE ARE THE ARTICLES for HTML', articles);
+      // res.send(articles);
+      res.render('topicTemplates/topic', {
+        title: topic,
+        articles: articles
+      });
+    })
+      break;
+    case 'CSS':
+    await CSSModel.showAllArticles().then(articles => {
+      console.log('(TopicController)HERE ARE THE ARTICLES for CSS', articles);
+      // res.send(articles);
+      res.render('topicTemplates/topic', {
+        title: topic,
+        articles: articles
+      });
+    })
+      break;
+    case 'Javascript':
+    await JsModel.showAllArticles().then(articles => {
+      console.log('(TopicController)HERE ARE THE ARTICLES for JS', articles);
+      res.render('topicTemplates/topic', {
+        title: topic,
+        articles: articles
+      });
+    })
+      break;
+    case 'Python':
+    await PythonModel.showAllArticles().then(articles => {
+      console.log('(TopicController) Here are the articles for PYTHON', articles);
+      res.render('topicTemplates/topic', {
+        title: topic,
+        articles: articles
+>>>>>>> testhere
       })
         break;
       case 'CSS':
@@ -49,6 +100,7 @@ exports.topics = async (req, res) => {
           articles = article;
         })
           break;
+<<<<<<< HEAD
           case 'Ruby':
           await RubyModel.showAllArticles().then(article => {
             console.log('(TopicController) Here are the articles for RUBY', article);
@@ -62,6 +114,10 @@ exports.topics = async (req, res) => {
         topic
       })
     }
+=======
+    default:
+    res.redirect(404, 'http://localhost:5000')
+>>>>>>> testhere
   }
 
   await toRender().then(()=> {
@@ -72,3 +128,38 @@ exports.topics = async (req, res) => {
     })
   })
 };
+
+exports.specificArticle = (req, res) => {
+
+  const topic = req.params.topic;
+  const id = req.params.id;
+
+  res.render('topicTemplates/specificArticle', {
+    title: 'Specific Article',
+    topic,
+    id
+  })
+};
+
+// So far it only saves into the ruby model 
+// Success message not showing , then redirect to home page or something
+exports.saveThisArticle = (req, res) => {
+
+  // res.send(req.params)
+  RubyModel.saveArticle(req.body.title, req.body.content).then(response => {
+    console.log('Hello', response);
+    if (response) {
+      console.log('error', err);
+    } else {
+      console.log('Succeed');
+    }
+    res.redirect('/')
+  });
+
+};
+
+// exports.saveThisArticleNode = NodeModel.saveArticle;
+// exports.saveThisArticleRuby = RubyModel.saveArticle;
+
+exports.savethisArticle
+

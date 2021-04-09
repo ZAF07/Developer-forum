@@ -10,6 +10,16 @@
 
     </small> -->
 
+    <h2>To complete for this page</h2>
+    <ul>
+      <li>Create an input where users can fill in the topic for the article</li>
+      <li>Create an input where users can enter their name to be stored with the article</li>
+      <li>Figure out a way to allow users to add social media handles with article</li>
+      <li>Style Page</li>
+      <li>Maybe create a page for when a member submits an article. Like maybe back to their profile where all their articles are displayed</li>
+    </ul>
+
+
     <div class="container-fluid mt-5 p-5" id="createArticle-container">
       <i class="far fa-newspaper" id="article-icon"></i>
       <h1 class="mb-5" id="createArticle-header">Share your Ideas</h1>
@@ -17,14 +27,23 @@
       <div class="container">
 
 
-      <form class="" action="/createarticle" method="post">
+      <form class="" id="form-control" action="" method="post">
         <script src="https://cdn.ckeditor.com/ckeditor5/21.0.0/classic/ckeditor.js"></script>
+<<<<<<< HEAD
         <div class="form-group">
           <label for="topic" id="topic-label">Topic</label>
           <input id="topic" type="text" name="topic">
+=======
+        <div class="form-group" id="form-group-title-label">
+>>>>>>> testhere
           <label for="title" id="title-label">Title</label>
           <input id="title" type="text" name="title">
         </div>
+        <div class="form-group" id="form-group-title-label">
+          <label for="topic" id="topic-label">Topic</label>
+          <input id="topic" type="text" name="topic">
+        </div>
+        
         <div class="form-group">
           <label for="editor" id="content-label">Content</label>
           <textarea id="editor" name="content" value="CKEDITOR.instances.content.getData()"></textarea>

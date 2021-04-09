@@ -35,6 +35,7 @@ exports.showAllArticles = async () => {
   }
 };
 
+<<<<<<< HEAD
 exports.saveNewArticle = async (title, article, createBy) => {
   let noErr = true;
 
@@ -57,3 +58,25 @@ exports.saveNewArticle = async (title, article, createBy) => {
     console.log('(Catch(e)) ---> ', e);
   }
 };
+=======
+
+// Get one Article
+exports.getOneArticle = (async (id) => {
+  let article;
+  
+  try {
+    await HtmlModel.find({_id:id}, (err, returnedArticle) => {
+      if (err) {
+        console.log('(HtmlModel FindOne error) ---> ', err);
+        article = 'error haha';
+      } else {
+        article = returnedArticle;
+      }
+    })
+  } catch (err) {
+    console.log('(Catch Error HtmlModel FindOne) ---> ', err);
+    article = 'Catch Error ---> ' + err;
+  }
+  return article;
+  })
+>>>>>>> testhere

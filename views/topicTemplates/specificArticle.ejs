@@ -1,0 +1,24 @@
+<%- include('../partials/topicPartials/header') -%>
+<%- include('../partials/nav') -%>
+<small class="hiddenId d-none"><%=id%></small>
+<small class="hiddenTopic d-none"><%=topic%></small>
+<h1>This is the Topic -> <i><%=topic%></i></h1>
+<small>This is the ID -> <strong><%=id%></strong></small>
+<h6>Rendered from specificArticle.ejs</h6>
+<!-- <h4>This page comes after user clicks on 'Read this article' link in specific topic page.</h4>
+<p>This page is where i display a specific article requested by the user.</p>
+<ol>
+    <li>Get the ID of the article</li>
+    <li>Use the ID to run Axios to find the specific article</li>
+    <li>Display the article</li>
+    <li>Style Page</li>
+</ol> -->
+<li>Style Page</li>
+These is the article --> 
+
+<!-- Entry point for AJAX to insert data -->
+<div id="root" class="container"></div>
+
+<%- include('../partials/specificPartials/footer') -%>
+
+<!-- Uses 'public/specific.js' to perform AJAX to retrieve articles from the database -->
