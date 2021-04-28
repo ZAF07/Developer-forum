@@ -13,21 +13,6 @@ include('../partials/nav') -%>
 </ol>
 -->
 
-<!-- <div id="root" class="container"></div> -->
-
-<div>
-  <% articles.forEach(article => { %>
-  <div class="card p-3 shadow-lg p-3 mb-5 bg-white rounded">
-    <h1><%= article.title %></h1>
-    <p><%= article.article %></p>
-    <small><%= article.id %></small>
-
-    <!-- <a href=`http://localhost:5000/ ${ <%= title %> }/article/${<%= article.id %>`
-      ><small>Read this article</small></a
-    > -->
-    <a href="<%=link%><%= article.id %>"> >Read here</a>
-  </div>
-  <% }); %>
-</div>
+<div id="root" class="container"></div>
 
 <%- include('../partials/topicPartials/footer') -%>

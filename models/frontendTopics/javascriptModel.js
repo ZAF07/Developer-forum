@@ -4,49 +4,47 @@ const mongoose = require('mongoose');
 const javascriptSchema = mongoose.Schema({
   title: {
     type: String,
-    required: [1, 'Title not given']
+    required: [1, 'Title not given'],
   },
   article: {
     type: String,
-    required: [1, 'Article cannot be empty']
+    required: [1, 'Article cannot be empty'],
   },
-  createdBy: String
+  createdBy: String,
 });
 
 // Define Model
-const Js = mongoose.model('js', javascriptSchema);
+exports.Js = mongoose.model('js', javascriptSchema);
 
+// exports.showAllArticles = async () => {
+//   let articles;
+//   await Js.find({}, (err, article) => {
+//     if (err) {
+//       console.log('(JSModel) ERROR FINDING DATA ---> ', err);
+//       articles = false;
+//     } else {
+//       articles = article;
+//     }
+//   })
+//   return articles;
+// };
 
-exports.showAllArticles = async () => {
-  let articles;
-  await Js.find({}, (err, article) => {
-    if (err) {
-      console.log('(JSModel) ERROR FINDING DATA ---> ', err);
-      articles = false;
-    } else {
-      articles = article;
-    }
-  })
-  return articles;
-};
+// // Get one Article
+// exports.getOneArticle = (async (id) => {
+//   let article;
 
-
-// Get one Article
-exports.getOneArticle = (async (id) => {
-  let article;
-  
-  try {
-    await Js.find({_id:id}, (err, returnedArticle) => {
-      if (err) {
-        console.log('(JsModel FindOne error) ---> ', err);
-        article = 'error haha';
-      } else {
-        article = returnedArticle;
-      }
-    })
-  } catch (err) {
-    console.log('(Catch Error JsModel FindOne) ---> ', err);
-    article = 'Catch Error ---> ' + err;
-  }
-  return article;
-  })
+//   try {
+//     await Js.find({_id:id}, (err, returnedArticle) => {
+//       if (err) {
+//         console.log('(JsModel FindOne error) ---> ', err);
+//         article = 'error haha';
+//       } else {
+//         article = returnedArticle;
+//       }
+//     })
+//   } catch (err) {
+//     console.log('(Catch Error JsModel FindOne) ---> ', err);
+//     article = 'Catch Error ---> ' + err;
+//   }
+//   return article;
+//   })

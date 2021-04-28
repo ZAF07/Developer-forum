@@ -68,61 +68,112 @@ exports.topics = async (req, res) => {
       // })
       break;
     case 'Javascript':
-      await JsModel.showAllArticles().then((articles) => {
-        console.log('(TopicController)HERE ARE THE ARTICLES for JS', articles);
-        res.render('topicTemplates/topic', {
-          title: topic,
-          articles: articles,
-        });
+      JsModel.Js.find({}, (err, retArticle) => {
+        if (!err) {
+          const articles = retArticle;
+          res.render('topicTemplates/topic', {
+            title: topic,
+            link: `http://localhost:5000/topic/${topic}/article/`,
+            articles,
+          });
+        }
       });
+      //   await JsModel.showAllArticles().then((articles) => {
+      //     console.log('(TopicController)HERE ARE THE ARTICLES for JS', articles);
+      //     res.render('topicTemplates/topic', {
+      //       title: topic,
+      //       articles: articles,
+      //     });
+      //   });
       break;
     case 'Python':
-      await PythonModel.showAllArticles().then((articles) => {
-        console.log(
-          '(TopicController) Here are the articles for PYTHON',
-          articles
-        );
-        res.render('topicTemplates/topic', {
-          title: topic,
-          articles: articles,
-        });
+      PythonModel.Python.find({}, (err, retArticle) => {
+        if (!err) {
+          console.log('TOPICCONTROLLER LINE 92 ', retArticle);
+          const articles = retArticle;
+          res.render('topicTemplates/topic', {
+            title: topic,
+            link: `http://localhost:5000/topic/${topic}/article/`,
+            articles,
+          });
+        }
       });
+      //   await PythonModel.showAllArticles().then((articles) => {
+      //     console.log(
+      //       '(TopicController) Here are the articles for PYTHON',
+      //       articles
+      //     );
+      //     res.render('topicTemplates/topic', {
+      //       title: topic,
+      //       articles: articles,
+      //     });
+      //   });
       break;
     case 'PHP':
-      await PhpModel.showAllArticles().then((articles) => {
-        console.log(
-          '(TopicController) Here are the articles for PHP',
-          articles
-        );
-        res.render('topicTemplates/topic', {
-          title: topic,
-          articles: articles,
-        });
+      PhpModel.Php.find({}, (err, retArticle) => {
+        if (!err) {
+          const articles = retArticle;
+          res.render('topicTemplates/topic', {
+            title: topic,
+            link: `http://localhost:5000/topic/${topic}/article/`,
+            articles,
+          });
+        }
       });
+      // await PhpModel.showAllArticles().then((articles) => {
+      //   console.log(
+      //     '(TopicController) Here are the articles for PHP',
+      //     articles
+      //   );
+      //   res.render('topicTemplates/topic', {
+      //     title: topic,
+      //     articles: articles,
+      //   });
+      // });
       break;
     case 'NodeJS':
-      await NodeModel.showAllArticles().then((articles) => {
-        console.log(
-          '(TopicController) Here are the articles for NODE',
-          articles
-        );
-        res.render('topicTemplates/topic', {
-          title: topic,
-          articles: articles,
-        });
+      NodeModel.Node.find({}, (err, retArticle) => {
+        if (!err) {
+          const articles = retArticle;
+          res.render('topicTemplates/topic', {
+            title: topic,
+            link: `http://localhost:5000/topic/${topic}/article/`,
+            articles,
+          });
+        }
       });
+      // await NodeModel.showAllArticles().then((articles) => {
+      //   console.log(
+      //     '(TopicController) Here are the articles for NODE',
+      //     articles
+      //   );
+      //   res.render('topicTemplates/topic', {
+      //     title: topic,
+      //     articles: articles,
+      //   });
+      // });
       break;
     case 'Ruby':
-      await RubyModel.showAllArticles().then((articles) => {
-        console.log(
-          '(TopicController) Here are the articles for RUBY',
-          articles
-        );
-        res.render('topicTemplates/topic', {
-          title: topic,
-          articles: articles,
-        });
+      RubyModel.Ruby.find({}, (err, retArticle) => {
+        if (!err) {
+          const articles = retArticle;
+          res.render('topicTemplates/topic', {
+            title: topic,
+            link: `http://localhost:5000/topic/${topic}/article/`,
+            articles,
+          });
+        }
       });
+      // await RubyModel.showAllArticles().then((articles) => {
+      //   console.log(
+      //     '(TopicController) Here are the articles for RUBY',
+      //     articles
+      //   );
+      //   res.render('topicTemplates/topic', {
+      //     title: topic,
+      //     articles: articles,
+      //   });
+      // });
       break;
     default:
       res.redirect(404, 'http://localhost:5000');
@@ -132,37 +183,177 @@ exports.topics = async (req, res) => {
 exports.specificArticle = (req, res) => {
   const topic = req.params.topic;
   const id = req.params.id;
+  console.log('IDDEEEE ', id);
 
-  HTMLModel.HtmlModel.find({ _id: id }, (err, retArticle) => {
-    if (!err) {
-      const article = retArticle;
-      res.render('topicTemplates/specificArticle', {
-        title: 'Specific Article',
-        topic,
-        id,
-        article,
-        h: article.title,
+  switch (topic) {
+    case 'HTML':
+      HTMLModel.HtmlModel.findById(id, (err, retArticle) => {
+        if (!err) {
+          const article = retArticle;
+          console.log(
+            'THIS IS RETURNED ARTICLE FROM, TOPICCONTROLLER',
+            retArticle
+          );
+          res.render('topicTemplates/specificArticle', {
+            title: 'Specific Article',
+            topic,
+            id,
+            article,
+            h: article,
+          });
+        } else {
+          console.log('Error -> ', err);
+        }
       });
-    }
-  });
+      break;
+    case 'CSS':
+      CSSModel.Style.findById(id, (err, retArticle) => {
+        if (!err) {
+          const article = retArticle;
+          console.log(
+            'THIS IS RETURNED ARTICLE FROM, TOPICCONTROLLER',
+            retArticle
+          );
+          res.render('topicTemplates/specificArticle', {
+            title: 'Specific Article',
+            topic,
+            id,
+            article,
+          });
+        } else {
+          console.log('Error -> ', err);
+        }
+      });
+      break;
+    case 'Javascript':
+      JsModel.Js.findById(id, (err, retArticle) => {
+        if (!err) {
+          const article = retArticle;
+          console.log(
+            'THIS IS RETURNED ARTICLE FROM, TOPICCONTROLLER',
+            retArticle
+          );
+          res.render('topicTemplates/specificArticle', {
+            title: 'Specific Article',
+            topic,
+            id,
+            article,
+            h: article,
+          });
+        } else {
+          console.log('Error -> ', err);
+        }
+      });
+      break;
+    case 'PHP':
+      // await PhpModel.showAllArticles().then((articles) => {
+      PhpModel.Php.findById(id, (err, retArticle) => {
+        console.log(
+          '(TopicController) Here are the articles for PHP',
+          retArticle
+        );
+        const article = retArticle;
+        res.render('topicTemplates/specificArticle', {
+          title: 'Specific Article',
+          topic,
+          id,
+          article,
+          h: article,
+        });
+      });
+      break;
+    case 'NodeJS':
+      // await NodeModel.showAllArticles().then((articles) => {
+      NodeModel.Node.findById(id, (err, retArticle) => {
+        console.log(
+          '(TopicController) Here are the articles for NODE',
+          retArticle
+        );
+        const article = retArticle;
+        res.render('topicTemplates/specificArticle', {
+          title: 'Specific Article',
+          topic,
+          id,
+          article,
+          h: article,
+        });
+      });
+      break;
+    case 'Ruby':
+      // await RubyModel.showAllArticles().then((articles) => {
+      RubyModel.Ruby.findById(id, (err, retArticle) => {
+        console.log(
+          '(TopicController) Here are the articles for RUBY',
+          retArticle
+        );
+        const article = retArticle;
+        res.render('topicTemplates/specificArticle', {
+          title: 'Specific Article',
+          topic,
+          id,
+          article,
+          h: article,
+        });
+      });
+      break;
+    case 'Python':
+      // await RubyModel.showAllArticles().then((articles) => {
+      PythonModel.Python.findById(id, (err, retArticle) => {
+        console.log(
+          '(TopicController) Here are the articles for RUBY',
+          retArticle
+        );
+        const article = retArticle;
+        res.render('topicTemplates/specificArticle', {
+          title: 'Specific Article',
+          topic,
+          id,
+          article,
+          h: article,
+        });
+      });
+      break;
+    default:
+      break;
+  }
 };
 
 // So far it only saves into the ruby model
 // Success message not showing , then redirect to home page or something
 exports.saveThisArticle = (req, res) => {
-  // res.send(req.params)
-  RubyModel.saveArticle(req.body.title, req.body.content).then((response) => {
-    console.log('Hello', response);
-    if (response) {
-      console.log('error', err);
-    } else {
-      console.log('Succeed');
-    }
-    res.redirect('/');
+  // console.log(res.send(req.params));
+  // RubyModel.saveArticle(req.body.title, req.body.content).then((response) => {
+  //   console.log('Hello', response);
+  //   if (response) {
+  //     console.log('error', err);
+  //   } else {
+  //     console.log('Succeed');
+  //   }
+  //   res.redirect('/');
+  // });
+
+  const articleRecieved = new CSSModel.Style({
+    title: req.body.title,
+    article: req.body.content,
   });
+
+  articleRecieved.save((err, article) => {
+    if (!err) {
+      res.redirect('/');
+    } else {
+      res.send(err.message);
+      ha = err.message;
+    }
+  });
+
+  // CSSModel.Style.save((err, result) => {
+  //   if (err) {
+  //     console.log('EERROR SAVING TOPICCONTROLLER LINE 170', err);
+  //   }
+  // });
 };
 
 // exports.saveThisArticleNode = NodeModel.saveArticle;
 // exports.saveThisArticleRuby = RubyModel.saveArticle;
 
-exports.savethisArticle;
+// exports.savethisArticle;

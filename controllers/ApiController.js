@@ -40,46 +40,76 @@ exports.retrieveArticles = async (req, res) => {
       // })
       break;
     case 'Javascript':
-      await JsModel.showAllArticles().then((articles) => {
-        console.log('(TopicController)HERE ARE THE ARTICLES for JS', articles);
-        res.send(articles);
+      await JsModel.Js.find({}, (err, retArticle) => {
+        if (!err) {
+          const articles = retArticle;
+          res.send(articles);
+        }
       });
+      // await JsModel.showAllArticles().then((articles) => {
+      //   console.log('(TopicController)HERE ARE THE ARTICLES for JS', articles);
+      //   res.send(articles);
+      // });
       break;
     case 'Python':
-      await PythonModel.showAllArticles().then((articles) => {
-        console.log(
-          '(TopicController) Here are the articles for PYTHON',
-          articles
-        );
-        res.send(articles);
+      await PythonModel.Python.find({}, (err, retArticle) => {
+        if (!err) {
+          const articles = retArticle;
+          res.send(articles);
+        }
       });
+      // await PythonModel.showAllArticles().then((articles) => {
+      //   console.log(
+      //     '(TopicController) Here are the articles for PYTHON',
+      //     articles
+      //   );
+      //   res.send(articles);
+      // });
       break;
     case 'PHP':
-      await PhpModel.showAllArticles().then((articles) => {
-        console.log(
-          '(TopicController) Here are the articles for PHP',
-          articles
-        );
-        res.send(articles);
+      await PhpModel.Php.find({}, (err, retArticle) => {
+        if (!err) {
+          const articles = retArticle;
+          res.send(articles);
+        }
       });
+      // await PhpModel.showAllArticles().then((articles) => {
+      //   console.log(
+      //     '(TopicController) Here are the articles for PHP',
+      //     articles
+      //   );
+      //   res.send(articles);
+      // });
       break;
     case 'NodeJS':
-      await NodeModel.showAllArticles().then((articles) => {
-        console.log(
-          '(TopicController) Here are the articles for NODE',
-          articles
-        );
-        res.send(articles);
+      await NodeModel.Node.find({}, (err, retArticle) => {
+        if (!err) {
+          const articles = retArticle;
+          res.send(articles);
+        }
       });
+      // await NodeModel.showAllArticles().then((articles) => {
+      //   console.log(
+      //     '(TopicController) Here are the articles for NODE',
+      //     articles
+      //   );
+      //   res.send(articles);
+      // });
       break;
     case 'Ruby':
-      await RubyModel.showAllArticles().then((articles) => {
-        console.log(
-          '(TopicController) Here are the articles for RUBY',
-          articles
-        );
-        res.send(articles);
+      await RubyModel.Ruby.find({}, (err, retArticle) => {
+        if (!err) {
+          const articles = retArticle;
+          res.send(articles);
+        }
       });
+      // await RubyModel.showAllArticles().then((articles) => {
+      //   console.log(
+      //     '(TopicController) Here are the articles for RUBY',
+      //     articles
+      //   );
+      //   res.send(articles);
+      // });
       break;
     default:
       res.redirect(404, 'http://localhost:5000');
@@ -114,29 +144,54 @@ exports.getOneArticle = async (req, res) => {
       // })
       break;
     case 'Javascript':
-      await JsModel.getOneArticle(id).then((article) => {
-        res.json(article);
+      await JsModel.Js.find({ _id: id }, (err, article) => {
+        if (!err) {
+          res.json(article);
+        }
       });
+      // await JsModel.getOneArticle(id).then((article) => {
+      //   res.json(article);
+      // });
       break;
     case 'Python':
-      await PythonModel.getOneArticle(id).then((article) => {
-        res.json(article);
+      await PythonModel.Python.find({ _id: id }, (err, article) => {
+        if (!err) {
+          res.json(article);
+        }
       });
+      // await PythonModel.getOneArticle(id).then((article) => {
+      //   res.json(article);
+      // });
       break;
     case 'PHP':
-      await PhpModel.getOneArticle(id).then((article) => {
-        res.json(article);
+      await PhpModel.Php.find({ _id: id }, (err, article) => {
+        if (!err) {
+          res.json(article);
+        }
       });
+      // await PhpModel.getOneArticle(id).then((article) => {
+      //   res.json(article);
+      // });
       break;
     case 'NodeJS':
-      await NodeModel.getOneArticle(id).then((article) => {
-        res.json(article);
+      await NodeModel.Node.find({ _id: id }, (err, article) => {
+        if (!err) {
+          res.json(article);
+        }
       });
+      // await NodeModel.getOneArticle(id).then((article) => {
+      //   res.json(article);
+      // });
       break;
     case 'Ruby':
-      await RubyModel.getOneArticle(id).then((article) => {
-        res.json(article);
+      await RubyModel.Ruby.find({ _id: id }, (err, article) => {
+        if (!err) {
+          res.json(article);
+        }
       });
+      // await RubyModel.getOneArticle(id).then((article) => {
+      //   res.json(article);
+      // });
       break;
     default:
       res.redirect(404, 'http://localhost:5000');

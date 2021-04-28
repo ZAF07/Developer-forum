@@ -4,13 +4,13 @@ const mongoose = require('mongoose');
 const cssSchema = mongoose.Schema({
   title: {
     type: String,
-    required: [1, 'Title not given']
+    required: [1, 'Title not given'],
   },
   article: {
     type: String,
-    required: [1, 'Article cannot be empty']
+    required: [1, 'Article cannot be empty'],
   },
-  createdBy: String
+  createdBy: String,
 });
 
 // Define Model
@@ -30,11 +30,10 @@ exports.Style = mongoose.model('cs', cssSchema);
 //   return articles;
 // };
 
-
 // // Get one Article
 // exports.getOneArticle = (async (id) => {
 //   let article;
-  
+
 //   try {
 //     await Style.find({_id:id}, (err, returnedArticle) => {
 //       if (err) {
