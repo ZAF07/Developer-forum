@@ -1,10 +1,9 @@
+<%- include('../partials/topicPartials/header') -%> <%-
+include('../partials/nav') -%>
 
-<%- include('../partials/topicPartials/header') -%>
-<%- include('../partials/nav') -%>
-
-<h1> Topic: <small class="topic"><%= title %></small></h1>
+<h1>Topic: <small class="topic"><%= title %></small></h1>
 <h6>Rendered from topic.ejs</h6>
-<h6>Uses public/javascript/index.js</h6> 
+<h6>Uses public/javascript/index.js</h6>
 <!-- <h3>This is the page users see when they click on the specific topic on the 'FRONT / BACK' subject page </h3>
 <small>This page would show all articles related to the selected topic together with a hyperlink to read the full article</small>
 <ol>
@@ -14,18 +13,21 @@
 </ol>
 -->
 
-<div id="root" class="container">
-
-</div>
+<!-- <div id="root" class="container"></div> -->
 
 <div>
   <% articles.forEach(article => { %>
-    <div class="card p-3  shadow-lg p-3 mb-5 bg-white rounded">
-      <h1><%= article.title %></h1>
-      <p><%= article.article  %></p>
-      <small><%= article.id %></small>
-    </div>
- <% }); %>
+  <div class="card p-3 shadow-lg p-3 mb-5 bg-white rounded">
+    <h1><%= article.title %></h1>
+    <p><%= article.article %></p>
+    <small><%= article.id %></small>
+
+    <!-- <a href=`http://localhost:5000/ ${ <%= title %> }/article/${<%= article.id %>`
+      ><small>Read this article</small></a
+    > -->
+    <a href="<%=link%><%= article.id %>"> >Read here</a>
+  </div>
+  <% }); %>
 </div>
 
 <%- include('../partials/topicPartials/footer') -%>

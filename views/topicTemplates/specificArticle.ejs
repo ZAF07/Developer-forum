@@ -1,5 +1,5 @@
-<%- include('../partials/topicPartials/header') -%>
-<%- include('../partials/nav') -%>
+<%- include('../partials/topicPartials/header') -%> <%-
+include('../partials/nav') -%>
 <small class="hiddenId d-none"><%=id%></small>
 <small class="hiddenTopic d-none"><%=topic%></small>
 <h1>This is the Topic -> <i><%=topic%></i></h1>
@@ -14,11 +14,15 @@
     <li>Style Page</li>
 </ol> -->
 <li>Style Page</li>
-These is the article --> 
+These is the article -->
 
 <!-- Entry point for AJAX to insert data -->
 <div id="root" class="container"></div>
 
-<%- include('../partials/specificPartials/footer') -%>
+<div class="container">
+  <h2 class="title"><%= article.title %></h2>
+  <p><%= h %></p>
+</div>
+<%= article %> <%- include('../partials/specificPartials/footer') -%>
 
 <!-- Uses 'public/specific.js' to perform AJAX to retrieve articles from the database -->
