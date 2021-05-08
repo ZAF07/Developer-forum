@@ -24,14 +24,16 @@
       <li class="nav-item">
         <a class="nav-link" href="/createarticle">Create Article</a>
       </li>
-      <% if (title === 'Create Article Page') { %>
+      <% if (title === 'Create Article Page' || title === 'Profile page') { %>
       <li class="nav-item">
         <a class="nav-link" href="/profile">Profile</a>
       </li>
       <% } %>
     </ul>
   </div>
-
-  <!-- DO THIS WHEN CHECKING IF USER SIGNED IN OR NOT -->
 </nav>
 <%= title %>
+
+<!-- DO THIS WHEN CHECKING IF USER SIGNED IN OR NOT -->
+
+<!-- DISPLAY LINE 27 PROFILE NAV ONLY IF THERE IS A SESSION/COOKIE SET IN CLIENT (USER HAS SIGNED IN) -->
