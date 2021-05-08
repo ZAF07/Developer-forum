@@ -1,13 +1,22 @@
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand pl-5 pr-5" href="/">Web Developers</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon" style='font-size:50%' ></span>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon" style="font-size: 50%"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-5">
-      <li class="nav-item ">
-        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      <li class="nav-item">
+        <a class="nav-link" href="/"
+          >Home <span class="sr-only">(current)</span></a
+        >
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/signup">Sign In</a>
@@ -15,15 +24,18 @@
       <li class="nav-item">
         <a class="nav-link" href="/createarticle">Create Article</a>
       </li>
+      <% if (title != 'Create Article Page') { %>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Signed in</a>
+      </li>
+      <% } else { %>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Logged out</a>
+      </li>
+      <% } %>
     </ul>
   </div>
-  
 
   <!-- DO THIS WHEN CHECKING IF USER SIGNED IN OR NOT -->
- <% if (title != 'Create Article Page') { %>
-  <li>Signed in</li>
-<% } else { %>
-<li>Logged out</li>
-<% } %>
 </nav>
-<%= title  %>
+<%= title %>
