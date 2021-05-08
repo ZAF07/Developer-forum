@@ -24,13 +24,9 @@
       <li class="nav-item">
         <a class="nav-link" href="/createarticle">Create Article</a>
       </li>
-      <% if (title != 'Create Article Page') { %>
+      <% if (title === 'Create Article Page') { %>
       <li class="nav-item">
-        <a class="nav-link" href="#">Signed in</a>
-      </li>
-      <% } else { %>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Logged out</a>
+        <a class="nav-link" href="/profile">Profile</a>
       </li>
       <% } %>
     </ul>

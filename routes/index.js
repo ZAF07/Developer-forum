@@ -29,6 +29,7 @@ router.get('/signup', RootController.signUp);
 //   })
 // });
 router.get('/createarticle', RootController.createArticle);
+router.get('/profile', RootController.profilePage);
 
 router.get('/:subject', RootController.frontOrBack);
 
@@ -40,7 +41,6 @@ router.get('/:subject', RootController.frontOrBack);
 //   // Then show a page telling that saved successfully or not
 // })
 
-
 router.post('/createarticle/:topic', TopicController.saveThisArticle);
 // router.post('/createarticle/:topic', (req,res) => {
 //     const here = req.params.topic;
@@ -50,7 +50,6 @@ router.post('/createarticle/:topic', TopicController.saveThisArticle);
 //     } else {
 //         res.send('nope')
 //     }
-    
 
 // })
 
