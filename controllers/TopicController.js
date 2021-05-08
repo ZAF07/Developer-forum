@@ -307,8 +307,6 @@ exports.specificArticle = (req, res) => {
   }
 };
 
-// So far it only saves into the ruby model
-// Success message not showing , then redirect to home page or something
 exports.saveThisArticle = (req, res) => {
   const title = req.body.topic.toLowerCase();
   console.log(`this is lower case ${title}`);

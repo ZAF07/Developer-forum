@@ -6,6 +6,7 @@ const PhpModel = require('../models/backendTopics/phpModel');
 const NodeModel = require('../models/backendTopics/nodeModel');
 const RubyModel = require('../models/backendTopics/rubyModel');
 
+// Find all articles in a specific topic
 exports.retrieveArticles = async (req, res) => {
   const topic = req.params.topic;
 
@@ -115,7 +116,7 @@ exports.retrieveArticles = async (req, res) => {
       res.redirect(404, 'http://localhost:5000');
   }
 };
-
+// Find one article by its uid
 exports.getOneArticle = async (req, res) => {
   const id = req.params.id;
   const topic = req.params.topic;
