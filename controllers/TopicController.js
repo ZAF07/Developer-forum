@@ -321,6 +321,8 @@ exports.specificArticle = (req, res) => {
 // So far it only saves into the ruby model
 // Success message not showing , then redirect to home page or something
 exports.saveThisArticle = (req, res) => {
+  const title = req.body.topic.toLowerCase();
+  console.log(`this is lower case ${title}`);
   // console.log(res.send(req.params));
   // RubyModel.saveArticle(req.body.title, req.body.content).then((response) => {
   //   console.log('Hello', response);
@@ -332,28 +334,62 @@ exports.saveThisArticle = (req, res) => {
   //   res.redirect('/');
   // });
 
-  const articleRecieved = new CSSModel.Style({
-    title: req.body.title,
-    article: req.body.content,
-  });
+  let articleRecieved;
 
-  articleRecieved.save((err, article) => {
+  switch (title) {
+    case 'css':
+      articleRecieved = new CSSModel.Style({
+        title: req.body.title,
+        article: req.body.content,
+      });
+      break;
+    case 'html':
+      articleRecieved = new HTMLModel.HtmlModel({
+        title: req.body.title,
+        article: req.body.content,
+      });
+      break;
+    case 'javascript':
+      articleRecieved = new JsModel.Js({
+        title: req.body.title,
+        article: req.body.content,
+      });
+      break;
+    case 'node':
+      articleRecieved = new NodeModel.Node({
+        title: req.body.title,
+        article: req.body.content,
+      });
+      break;
+    case 'php':
+      articleRecieved = new PhpModel.Php({
+        title: req.body.title,
+        article: req.body.content,
+      });
+      break;
+    case 'ruby':
+      articleRecieved = new RubyModel.Ruby({
+        title: req.body.title,
+        article: req.body.content,
+      });
+      break;
+    case 'python':
+      articleRecieved = new PythonModel.Python({
+        title: req.body.title,
+        article: req.body.content,
+      });
+      break;
+
+    default:
+      break;
+  }
+
+  articleRecieved.save((err) => {
     if (!err) {
-      res.redirect('/');
-    } else {
-      res.send(err.message);
-      ha = err.message;
+      res.status(200).redirect('/');
+      return;
     }
+    res.status(400).send('err.message');
+    ha = err.message;
   });
-
-  // CSSModel.Style.save((err, result) => {
-  //   if (err) {
-  //     console.log('EERROR SAVING TOPICCONTROLLER LINE 170', err);
-  //   }
-  // });
 };
-
-// exports.saveThisArticleNode = NodeModel.saveArticle;
-// exports.saveThisArticleRuby = RubyModel.saveArticle;
-
-// exports.savethisArticle;
