@@ -9,6 +9,9 @@ include('../partials/nav') -%>
     </small> -->
 
 <div class="container col-sm-4" id="signIn-container">
+  <% if (errMsg) { %>
+  <small class="text-danger"><%= errMsg %></small>
+  <% } %>
   <form class="form-signin" method="POST" action="/register">
     <i class="fas fa-sign-in-alt" id="signIn-icon"></i>
     <h1 class="h3 mb-3 font-weight-normal"><%= title %></h1>

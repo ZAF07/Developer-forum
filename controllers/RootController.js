@@ -86,26 +86,67 @@ exports.login = (req, res) => {
     username: req.body.username,
     password: req.body.password,
   });
-
-  req.login(user, (err) => {
-    // If error, redirect to login page
-    if (err) {
-      console.log('LOGIN ERROR --> ', err);
-      res.redirect('/login');
+  // Query DB to find if username exists
+  User.findOne({ username: user.username }, (err, found) => {
+    // If user is found, go ahead and run login()and authenticate
+    if (found) {
+      req.login(user, (err) => {
+        // If error, redirect to login page
+        if (err) {
+          console.log('LOGIN ERROR --> ', err);
+          res.redirect('/login');
+        } else {
+          console.log('FOUNDDDDD');
+          // Authenticate user and redirect to secrets page
+          passport.authenticate('local')(req, res, () => {
+            // on LogIn is where i set my session tokens and cookies
+            console.log(`hahahaha ${err}`);
+            req.session.logged_in = user.username;
+            req.session.visited_times = 1;
+            res.render('rootsTemplates/profile', {
+              user: user.username,
+              title: user.username,
+            });
+          });
+        }
+      });
     } else {
-      // Authenticate user and redirect to secrets page
-      passport.authenticate('local')(req, res, () => {
-        // on log in is where is set my session tokens and cookies
-        req.session.logged_in = user.username;
-        req.session.visited_times = 1;
-        res.render('rootsTemplates/profile', {
-          user: user.username,
-          title: user.username,
-        });
+      console.log('nOOOOOOOO');
+      // If no such user exists redirect to sign up page and prompt to register
+      const errMsg = 'User not found. Please create a new account';
+      const d = new Date();
+      const y = d.getFullYear();
+      const userExists = req.user;
+      res.status(404).render('rootsTemplates/sign-up', {
+        title: 'Sign Up Here',
+        year: y,
+        userExists: userExists,
+        errMsg,
       });
     }
   });
 };
+
+// exports.login = (req, res) => {
+//   const user = new User({
+//     username: req.body.username,
+//     password: req.body.password,
+//   });
+
+//   req.login(user, (err) => {
+//     // If error, redirect to login page
+//     if (err) {
+//       console.log('LOGIN ERROR --> ', err);
+//       res.redirect('/login');
+//     } else {
+//       // Authenticate user and redirect to secrets page
+//       passport.authenticate('local', {
+//         successRedirect: '/profile',
+//         failureRedirect: '/profile',
+//       });
+//     }
+//   });
+// };
 
 exports.logout = (req, res) => {
   // Passport method to logout user
@@ -124,13 +165,21 @@ exports.logout = (req, res) => {
 };
 
 exports.register = (req, res) => {
+  const userExists = req.user;
+  const d = new Date();
+  const y = d.getFullYear();
   User.register(
     { username: req.body.username },
     req.body.password,
     (err, user) => {
       if (err) {
         console.log(`Passport error ${err}`);
-        res.status(404).send(err);
+        res.status(404).render('rootsTemplates/sign-up', {
+          title: 'Sign Up Here',
+          year: y,
+          userExists: userExists,
+          errMsg: err.message,
+        });
       } else {
         console.log(`HERE IS PASSPORT ${req.user}`);
         passport.authenticate('local')(req, res, () => {
