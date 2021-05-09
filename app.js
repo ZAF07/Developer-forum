@@ -5,6 +5,9 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const passport = require('passport');
+const session = require('express-session');
+const User = require('./models/user/user');
 
 const indexRouter = require('./routes/index');
 const topicRouter = require('./routes/topics');
@@ -15,6 +18,7 @@ const app = express();
 mongoose.connect('mongodb://localhost:27017/webdevforum', {
   useUnifiedTopology: true,
   useNewUrlParser: true,
+  useCreateIndex: true,
 });
 
 // view engine setup
@@ -27,6 +31,23 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+/******* PASSPORT *******/
+// Setting up Express-Session // !! IMPORTANT THAT SET-UP IS PLACED HERE !!
+app.use(
+  session({
+    secret: 'littleSecretIsheredudee.',
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(User.createStrategy());
+// Reading and populate Cookies
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.use('/', indexRouter);
 app.use('/topic', topicRouter);

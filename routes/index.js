@@ -21,8 +21,8 @@ router.get('/', RootController.homePage);
 //   })
 // });
 
-router.get('/signup', RootController.signUp);
-
+router.get('/signin', RootController.signIn);
+router.get('/sign-up', RootController.signUp);
 // router.get('/create', function(req, res) {
 //   res.render('roots/create', {
 //     title: 'Create Article Page'
@@ -42,6 +42,11 @@ router.get('/:subject', RootController.frontOrBack);
 // })
 
 router.post('/createarticle/:topic', TopicController.saveThisArticle);
+
+router.post('/register', RootController.register);
+router.post('/login', RootController.login);
+router.post('/logout', RootController.logout);
+
 // router.post('/createarticle/:topic', (req,res) => {
 //     const here = req.params.topic;
 

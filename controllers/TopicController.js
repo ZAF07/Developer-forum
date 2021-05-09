@@ -8,6 +8,7 @@ const RubyModel = require('../models/backendTopics/rubyModel');
 
 exports.topics = async (req, res) => {
   const topic = req.params.topic;
+  const userExists = req.user;
 
   switch (topic) {
     case 'HTML':
@@ -19,6 +20,7 @@ exports.topics = async (req, res) => {
             title: topic,
             link: `http://localhost:5000/topic/${topic}/article/`,
             articles,
+            userExists,
           });
         }
       });
@@ -42,6 +44,7 @@ exports.topics = async (req, res) => {
             title: topic,
             link: `http://localhost:5000/topic/${topic}/article/`,
             articles,
+            userExists: userExists,
           });
         }
       });
@@ -64,6 +67,7 @@ exports.topics = async (req, res) => {
             title: topic,
             link: `http://localhost:5000/topic/${topic}/article/`,
             articles,
+            userExists: userExists,
           });
         }
       });
@@ -106,6 +110,7 @@ exports.topics = async (req, res) => {
             title: topic,
             link: `http://localhost:5000/topic/${topic}/article/`,
             articles,
+            userExists: userExists,
           });
         }
       });
@@ -128,6 +133,7 @@ exports.topics = async (req, res) => {
             title: topic,
             link: `http://localhost:5000/topic/${topic}/article/`,
             articles,
+            userExists: userExists,
           });
         }
       });
@@ -150,6 +156,7 @@ exports.topics = async (req, res) => {
             title: topic,
             link: `http://localhost:5000/topic/${topic}/article/`,
             articles,
+            userExists: userExists,
           });
         }
       });
@@ -172,6 +179,7 @@ exports.topics = async (req, res) => {
 exports.specificArticle = (req, res) => {
   const topic = req.params.topic;
   const id = req.params.id;
+  const userExists = req.user;
   console.log('IDDEEEE ', id);
 
   switch (topic) {
@@ -189,6 +197,8 @@ exports.specificArticle = (req, res) => {
             id,
             article,
             h: article,
+
+            userExists: userExists,
           });
         } else {
           console.log('Error -> ', err);
@@ -208,6 +218,8 @@ exports.specificArticle = (req, res) => {
             topic,
             id,
             article,
+
+            userExists: userExists,
           });
         } else {
           console.log('Error -> ', err);
@@ -228,6 +240,8 @@ exports.specificArticle = (req, res) => {
             id,
             article,
             h: article,
+
+            userExists: userExists,
           });
         } else {
           console.log('Error -> ', err);
@@ -248,6 +262,8 @@ exports.specificArticle = (req, res) => {
           id,
           article,
           h: article,
+
+          userExists: userExists,
         });
       });
       break;
@@ -265,6 +281,8 @@ exports.specificArticle = (req, res) => {
           id,
           article,
           h: article,
+
+          userExists: userExists,
         });
       });
       break;
@@ -282,6 +300,8 @@ exports.specificArticle = (req, res) => {
           id,
           article,
           h: article,
+
+          userExists: userExists,
         });
       });
       break;
@@ -299,6 +319,8 @@ exports.specificArticle = (req, res) => {
           id,
           article,
           h: article,
+
+          userExists: userExists,
         });
       });
       break;

@@ -19,12 +19,12 @@
         >
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/signup">Sign In</a>
+        <a class="nav-link" href="/signin">Sign In</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/createarticle">Create Article</a>
       </li>
-      <% if (title === 'Create Article Page' || title === 'Profile page') { %>
+      <% if (typeof userExists == 'object' && userExists) { %>
       <li class="nav-item">
         <a class="nav-link" href="/profile">Profile</a>
       </li>

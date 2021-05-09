@@ -9,7 +9,7 @@ include('../partials/nav') -%>
     </small> -->
 
 <div class="container col-sm-4" id="signIn-container">
-  <form class="form-signin" method="POST" action="/login">
+  <form class="form-signin" method="POST" action="/register">
     <i class="fas fa-sign-in-alt" id="signIn-icon"></i>
     <h1 class="h3 mb-3 font-weight-normal"><%= title %></h1>
     <label for="username" class="sr-only">Username</label>
@@ -42,9 +42,7 @@ include('../partials/nav') -%>
     >
       Sign in
     </button>
-    <a href="/sign-up" class="sign-up-msg"
-      >Want to contribute? Create an account and start posting</a
-    >
+
     <p class="mt-5 mb-3 text-muted">© <%= year %></p>
   </form>
 </div>
