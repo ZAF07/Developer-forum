@@ -4,7 +4,7 @@ const axios = require('axios');
 const RootController = require('../controllers/RootController');
 const TopicController = require('../controllers/TopicController');
 const RubyController = require('../models/backendTopics/rubyModel');
-
+const passport = require('passport');
 /* GET home page. */
 // router.get('/',  async function(req, res, next) {
 //
@@ -21,7 +21,7 @@ router.get('/', RootController.homePage);
 //   })
 // });
 
-router.get('/signin', RootController.signIn);
+router.get('/sign-in', RootController.signIn);
 router.get('/sign-up', RootController.signUp);
 // router.get('/create', function(req, res) {
 //   res.render('roots/create', {
@@ -44,7 +44,11 @@ router.get('/:subject', RootController.frontOrBack);
 router.post('/createarticle/:topic', TopicController.saveThisArticle);
 
 router.post('/register', RootController.register);
-router.post('/login', RootController.login);
+router.post(
+  '/login',
+  passport.authenticate('local', { failureRedirect: '/sign-up' }),
+  RootController.login
+);
 router.post('/logout', RootController.logout);
 
 // router.post('/createarticle/:topic', (req,res) => {

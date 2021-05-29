@@ -24,7 +24,7 @@ mongoose.connect('mongodb://localhost:27017/webdevforum', {
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
+console.log('this', __dirname);
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -44,7 +44,10 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+// Passport local strategy
 passport.use(User.createStrategy());
+
 // Reading and populate Cookies
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
