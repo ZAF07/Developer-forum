@@ -5,7 +5,7 @@ const PythonModel = require('../models/backendTopics/pythonModel');
 const PhpModel = require('../models/backendTopics/phpModel');
 const NodeModel = require('../models/backendTopics/nodeModel');
 const RubyModel = require('../models/backendTopics/rubyModel');
-
+const User = require('../models/user/user')
 // Find all articles in a specific topic
 exports.retrieveArticles = async (req, res) => {
   const topic = req.params.topic;
@@ -198,3 +198,13 @@ exports.getOneArticle = async (req, res) => {
       res.redirect(404, 'http://localhost:5000');
   }
 };
+
+exports.getUserArticles = async (req,res) => {
+  const thisUser = req.params.user;
+        await User.find({username: thisUser}, (err, retArticle) => {
+          if (!err) {
+            const articles = retArticle;
+            res.send(articles);
+          }
+        });
+}

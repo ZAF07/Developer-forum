@@ -4,7 +4,9 @@ const ApiController = require('../controllers/ApiController');
 
 router.get('/:topic', ApiController.retrieveArticles);
 
+router.get('/user/:user', ApiController.getUserArticles);
 // Route to get specific article from database
 router.get('/:topic/:id', ApiController.getOneArticle);
+
 
 module.exports = router;

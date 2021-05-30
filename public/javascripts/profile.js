@@ -6,16 +6,17 @@
 //   console.log('This is the topic', topic);
 // }
 // getTopic();
-
 async function findArticle() {
-  const topic = await document.querySelector('.topic').innerHTML;
+  const user = document.getElementById('user').innerHTML;
+  console.log(`THIS IS USER --> ${user}`);
   const findData = axios({
-    url: `http://localhost:5000/database/${topic}`,
+    url: `http://localhost:5000/database/user/${user}`,
     method: 'GET',
   });
 
   await findData.then((res) => {
-    console.log(res.data);
+    console.log(res.data[0]);
+
 
     // Got to figure this out -> (sSometimes article doesnt load) so i reload the page if article wasnt loaded
     if (!res.data) location.reload();
@@ -24,10 +25,14 @@ async function findArticle() {
     const div = document.querySelector('#root');
 
     // Collect Data
-    const articlesArr = res.data;
+    const articlesArr = res.data[0].python_articles[0];
+    console.log(`whuttt --> ${articlesArr.title}`);
 
     articlesArr.forEach((article) => {
       console.log('THIS IS THE ID ---> ', article._id);
+      console.log('THIS IS THE article ---> ', article.python_articles);
+      const userArticles = article.python_articles;
+      console.log(`whutt --> ${userArticles.article}`);
       // Create Elements
       const container = document.createElement('div');
       const innerContainer = document.createElement('div');
@@ -41,10 +46,11 @@ async function findArticle() {
       innerContainer.className = 'container';
 
       // Populate Elements
-      h4.innerHTML = article.title;
-      h4.name = article._id;
-      small.innerHTML = article.article.substring(0, 100) + '...';
-      link.href = `http://localhost:5000/topic/${topic}/article/` + article._id;
+      h4.innerHTML = userArticles.title;
+      h4.name = userArticles._id;
+      small.innerHTML = userArticles.article.substring(0, 100) + '...';
+      link.href =
+        `http://localhost:5000/topic/${topic}/article/` + userArticles._id;
       link.innerHTML = '<small>Read this article</small>';
 
       // Populate the container

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 // Define Schema
-const pythonSchema = mongoose.Schema({
+ const pythonSchema = mongoose.Schema({
   title: {
     type: String,
     required: [1, 'Title not given'],
@@ -10,13 +10,14 @@ const pythonSchema = mongoose.Schema({
     type: String,
     required: [1, 'Article cannot be empty'],
   },
+  topic: String,
   createdBy: String,
 });
 
 // Define Model
 
 exports.Python = mongoose.model('python', pythonSchema);
-
+exports.pythonSchema = pythonSchema;
 // exports.showAllArticles = async () => {
 //   let articles;
 //   await Python.find({}, (err, article) => {

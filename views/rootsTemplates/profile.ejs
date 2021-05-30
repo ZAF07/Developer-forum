@@ -11,4 +11,11 @@ include('../partials/nav') -%>
 <form action="/logout" method="POST">
   <input type="submit" value="Log Out" />
 </form>
-<%- include('../partials/topicPartials/footer') -%>
+<% if (typeof userExists === 'object') { %>
+ <h1 id="user"><%= userExists.username %> </h1>
+<% } %>
+
+<div id="root"></div>
+<%- include('../partials/profilePartials/footer') -%>
+
+

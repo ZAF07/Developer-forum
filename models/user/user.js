@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const passportLocalMongoose = require('passport-local-mongoose');
-
-const User = new Schema({});
+const python = require('../backendTopics/pythonModel');
+const User = new Schema({
+  python_articles: [python.pythonSchema],
+});
 
 User.plugin(passportLocalMongoose);
 

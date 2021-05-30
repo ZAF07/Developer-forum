@@ -5,6 +5,8 @@ const PythonModel = require('../models/backendTopics/pythonModel');
 const PhpModel = require('../models/backendTopics/phpModel');
 const NodeModel = require('../models/backendTopics/nodeModel');
 const RubyModel = require('../models/backendTopics/rubyModel');
+const User = require('../models/user/user');
+
 
 exports.topics = async (req, res) => {
   const topic = req.params.topic;
@@ -330,18 +332,22 @@ exports.specificArticle = (req, res) => {
 };
 
 exports.saveThisArticle = (req, res) => {
-  const title = req.body.topic.toLowerCase();
-  console.log(`this is lower case ${title}`);
+  const user = req.user.username;
+  console.log(`THIS IS THE REQUEST USER --> ${user}`);
+  const topic = req.body.topic.toLowerCase();
+  console.log(`this is lower case ${topic}`);
 
   // Variable to use to store new entries object
   let articleRecieved;
+  let userRecieved;
 
-  switch (title) {
+  switch (topic) {
     case 'css':
       articleRecieved = new CSSModel.Style({
         title: req.body.title,
         article: req.body.content,
       });
+      userRecieved = new User 
       break;
     case 'html':
       articleRecieved = new HTMLModel.HtmlModel({
@@ -377,12 +383,37 @@ exports.saveThisArticle = (req, res) => {
       articleRecieved = new PythonModel.Python({
         title: req.body.title,
         article: req.body.content,
+        topic: topic
+      });
+
+      userRecieved = new User({
+        python_articles: articleRecieved,
       });
       break;
 
     default:
       break;
   }
+    // userRecieved.save((err) => {
+    //   if (!err) {
+    //     console.log(`ERROR SAVING INTO UISER WITH ARTICLE --> ${err}`);
+    //   }
+    //   console.log(`SUCCESS SAVING INTO ARTICLE`);
+    // });
+
+    User.updateOne(
+      { username: user },
+      {
+        $set: {
+          python_articles: [articleRecieved],
+        },
+      }, (err, results) => {
+        if (err) {
+          console.log(`update err -->${err}`);
+        }
+        console.log(`SUCCESS UPDATING`);
+      }
+    );
 
   articleRecieved.save((err) => {
     if (!err) {
@@ -392,4 +423,5 @@ exports.saveThisArticle = (req, res) => {
     res.status(400).send('err.message');
     ha = err.message;
   });
+
 };
