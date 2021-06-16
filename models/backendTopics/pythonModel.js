@@ -16,7 +16,10 @@ const mongoose = require('mongoose');
 
 // Define Model
 
+// Model is exported to controllers to run DB queries 
 exports.Python = mongoose.model('python', pythonSchema);
+
+// Schema is exported to TopicControllers to use to save article in DB
 exports.pythonSchema = pythonSchema;
 // exports.showAllArticles = async () => {
 //   let articles;
