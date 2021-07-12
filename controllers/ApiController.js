@@ -202,7 +202,9 @@ exports.getOneArticle = async (req, res) => {
 exports.getUserArticles = async (req,res) => {
   const thisUser = req.params.user;
         await User.find({username: thisUser}, (err, retArticle) => {
+
           if (!err) {
+                      // console.log('####### USER MODEL API #######', retArticle);
             const articles = retArticle;
             res.send(articles);
           }

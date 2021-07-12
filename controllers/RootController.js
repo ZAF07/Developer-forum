@@ -2,8 +2,10 @@ const passport = require('passport');
 const User = require('../models/user/user');
 
 exports.homePage = (req, res) => {
+  // REQ.USER COMES FROM PASSPORT
+  // GIVES ME THE ENTIRE USER OBJECT
   const userExists = req.user;
-  console.log(`homepage ${userExists}`);
+  console.log(`homepage -->> ${userExists}`);
   res.render('rootsTemplates/home.ejs', {
     title: 'Web Dev Forum',
     userExists: userExists,
@@ -74,6 +76,7 @@ exports.frontOrBack = (req, res, next) => {
 
 exports.profilePage = (req, res) => {
   const userExists = req.user;
+  console.log('PROFILEpAGE USER REQ.USER =--> ', req.user);
   console.log(`profile ${userExists}`);
   res.render('rootsTemplates/profile', {
     title: 'Profile page',
@@ -82,14 +85,18 @@ exports.profilePage = (req, res) => {
 };
 
 exports.login = (req, res) => {
+  const userExists = req.user
+  console.log('LOGIN USEREXISTS REQ.USER', req.user);
   const user = new User({
     username: req.body.username,
     password: req.body.password,
   });
 
   res.render('rootsTemplates/profile', {
+    
     user: user.username,
     title: user.username,
+    userExists: userExists,
   });
   // passport.authenticate('local', (err, user, info) => {
   //   console.log('THIS IS USER_> ', user);

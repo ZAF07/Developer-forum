@@ -10,6 +10,7 @@ const htmlSchema = mongoose.Schema({
     type: String,
     required: [1, 'Article body is required!'],
   },
+  topic: String,
   createdBy: String,
 });
 

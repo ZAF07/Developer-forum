@@ -10,6 +10,7 @@ const rubySchema = mongoose.Schema({
     type: String,
     required: [1, 'Article cannot be empty'],
   },
+  topic: String,
   createdBy: String,
 });
 

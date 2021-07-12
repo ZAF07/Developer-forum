@@ -1,3 +1,4 @@
+
 // Links to topic.ejs
 
 // async function getTopic() {
@@ -7,7 +8,7 @@
 // }
 // getTopic();
 async function findArticle() {
-  const user = document.getElementById('user').innerHTML;
+  const user =  document.getElementById('user').innerHTML;
   console.log(`THIS IS USER --> ${user}`);
   const findData = axios({
     url: `http://localhost:5000/database/user/${user}`,
@@ -15,7 +16,10 @@ async function findArticle() {
   });
 
   await findData.then((res) => {
-    console.log(res.data[0]);
+    const {data} = res;
+    console.log(data[0].python_articles);
+    // console.log(res.data[0]);
+    // console.log({python_articles} = res);
 
 
     // Got to figure this out -> (sSometimes article doesnt load) so i reload the page if article wasnt loaded
@@ -25,14 +29,15 @@ async function findArticle() {
     const div = document.querySelector('#root');
 
     // Collect Data
-    const articlesArr = res.data[0].python_articles[0];
+    const articlesArr = data[0].python_articles;
     console.log(`whuttt --> ${articlesArr.title}`);
+    console.log('THIS IS ARTICLE --> ',articlesArr);
 
     articlesArr.forEach((article) => {
       console.log('THIS IS THE ID ---> ', article._id);
-      console.log('THIS IS THE article ---> ', article.python_articles);
+      console.log('THIS IS THE article ---> ', article.title);
       const userArticles = article.python_articles;
-      console.log(`whutt --> ${userArticles.article}`);
+      // console.log(`whutt --> ${userArticles.article}`);
       // Create Elements
       const container = document.createElement('div');
       const innerContainer = document.createElement('div');
@@ -46,11 +51,11 @@ async function findArticle() {
       innerContainer.className = 'container';
 
       // Populate Elements
-      h4.innerHTML = userArticles.title;
-      h4.name = userArticles._id;
-      small.innerHTML = userArticles.article.substring(0, 100) + '...';
+      h4.innerHTML = article.title;
+      h4.name = article._id;
+      small.innerHTML = article.article.substring(0, 100) + '...';
       link.href =
-        `http://localhost:5000/topic/${topic}/article/` + userArticles._id;
+        `http://localhost:5000/topic/${article.topic}/article/` + article._id;
       link.innerHTML = '<small>Read this article</small>';
 
       // Populate the container
@@ -60,10 +65,7 @@ async function findArticle() {
       container.appendChild(link);
 
       // Add Elements to DOM
-      // div.appendChild(h4);
-      // div.appendChild(small);
-      // div.appendChild(link)
-      // div.appendChild(br)
+
       div.appendChild(container);
     });
   });

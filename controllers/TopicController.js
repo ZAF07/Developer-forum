@@ -22,7 +22,7 @@ exports.topics = async (req, res) => {
             title: topic,
             link: `http://localhost:5000/topic/${topic}/article/`,
             articles,
-            userExists,
+            userExists: userExists,
           });
         }
       });
@@ -90,6 +90,7 @@ exports.topics = async (req, res) => {
             title: topic,
             link: `http://localhost:5000/topic/${topic}/article/`,
             articles,
+            userExists: userExists,
           });
         }
       });
@@ -182,6 +183,7 @@ exports.specificArticle = (req, res) => {
   const topic = req.params.topic;
   const id = req.params.id;
   const userExists = req.user;
+  console.log('TOPIC FROM SPECIFICARTICLE CONTROLLER --> ', topic);
   console.log('IDDEEEE ', id);
 
   switch (topic) {
@@ -311,7 +313,7 @@ exports.specificArticle = (req, res) => {
       // await RubyModel.showAllArticles().then((articles) => {
       PythonModel.Python.findById(id, (err, retArticle) => {
         console.log(
-          '(TopicController) Here are the articles for RUBY',
+          '(TopicController) Here are the articles for PYTHON',
           retArticle
         );
         const article = retArticle;
@@ -346,6 +348,7 @@ exports.saveThisArticle = (req, res) => {
       articleRecieved = new CSSModel.Style({
         title: req.body.title,
         article: req.body.content,
+        topic: topic
       });
       userRecieved = new User 
       break;
@@ -353,30 +356,35 @@ exports.saveThisArticle = (req, res) => {
       articleRecieved = new HTMLModel.HtmlModel({
         title: req.body.title,
         article: req.body.content,
+        topic: topic
       });
       break;
     case 'javascript':
       articleRecieved = new JsModel.Js({
         title: req.body.title,
         article: req.body.content,
+        topic: topic
       });
       break;
     case 'node':
       articleRecieved = new NodeModel.Node({
         title: req.body.title,
         article: req.body.content,
+        topic: topic
       });
       break;
     case 'php':
       articleRecieved = new PhpModel.Php({
         title: req.body.title,
         article: req.body.content,
+        topic: topic
       });
       break;
     case 'ruby':
       articleRecieved = new RubyModel.Ruby({
         title: req.body.title,
         article: req.body.content,
+        topic: topic
       });
       break;
     case 'python':
@@ -401,19 +409,25 @@ exports.saveThisArticle = (req, res) => {
     //   console.log(`SUCCESS SAVING INTO ARTICLE`);
     // });
 
-    User.updateOne(
-      { username: user },
-      {
-        $set: {
-          python_articles: [articleRecieved],
-        },
-      }, (err, results) => {
-        if (err) {
-          console.log(`update err -->${err}`);
-        }
-        console.log(`SUCCESS UPDATING`);
-      }
-    );
+    // User.updateOne(
+    //   { username: user },
+    //   {
+    //     $set: {
+    //       python_articles: [articleRecieved],
+    //     },
+    //   }, (err, results) => {
+    //     if (err) {
+    //       console.log(`update err -->${err}`);
+    //     }
+    //     console.log(`SUCCESS UPDATING`);
+    //   }
+    // );
+
+    User.findOne({username: user}, (err, foundUser) => {
+      console.log('FOUND USER ===> ', foundUser);
+      foundUser.python_articles.push(articleRecieved)
+      foundUser.save();
+    })
 
   articleRecieved.save((err) => {
     if (!err) {
