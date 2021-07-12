@@ -34,6 +34,7 @@ async function findArticle() {
     console.log('THIS IS ARTICLE --> ',articlesArr);
 
     articlesArr.forEach((article) => {
+      console.log(article.topic);
       console.log('THIS IS THE ID ---> ', article._id);
       console.log('THIS IS THE article ---> ', article.title);
       const userArticles = article.python_articles;
@@ -55,9 +56,9 @@ async function findArticle() {
       h4.name = article._id;
       small.innerHTML = article.article.substring(0, 100) + '...';
       link.href =
-        `http://localhost:5000/topic/${article.topic}/article/` + article._id;
+        `http://localhost:5000/topic/${article.topic}/article/${article._id}`;
       link.innerHTML = '<small>Read this article</small>';
-
+// `http://localhost:5000/topic/Javascript/article/60ec1c9e4b1b78d6e9ec8b71`
       // Populate the container
       // container.appendChild(h4)
       container.appendChild(h4);

@@ -348,7 +348,7 @@ exports.saveThisArticle = (req, res) => {
       articleRecieved = new CSSModel.Style({
         title: req.body.title,
         article: req.body.content,
-        topic: topic
+        topic: 'CSS'
       });
       userRecieved = new User 
       break;
@@ -356,42 +356,42 @@ exports.saveThisArticle = (req, res) => {
       articleRecieved = new HTMLModel.HtmlModel({
         title: req.body.title,
         article: req.body.content,
-        topic: topic
+        topic: 'HTML'
       });
       break;
     case 'javascript':
       articleRecieved = new JsModel.Js({
         title: req.body.title,
         article: req.body.content,
-        topic: topic
+        topic: 'Javascript'
       });
       break;
     case 'node':
       articleRecieved = new NodeModel.Node({
         title: req.body.title,
         article: req.body.content,
-        topic: topic
+        topic: 'NodeJs'
       });
       break;
     case 'php':
       articleRecieved = new PhpModel.Php({
         title: req.body.title,
         article: req.body.content,
-        topic: topic
+        topic: 'PHP'
       });
       break;
     case 'ruby':
       articleRecieved = new RubyModel.Ruby({
         title: req.body.title,
         article: req.body.content,
-        topic: topic
+        topic: 'Ruby'
       });
       break;
     case 'python':
       articleRecieved = new PythonModel.Python({
         title: req.body.title,
         article: req.body.content,
-        topic: topic
+        topic: 'Python'
       });
 
       userRecieved = new User({
