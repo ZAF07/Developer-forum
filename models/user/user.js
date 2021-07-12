@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const passportLocalMongoose = require('passport-local-mongoose');
 const python = require('../backendTopics/pythonModel');
 const User = new Schema({
-  python_articles: [python.pythonSchema],
+  articles: [python.pythonSchema],
 });
 
 User.plugin(passportLocalMongoose);

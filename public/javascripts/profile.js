@@ -17,7 +17,7 @@ async function findArticle() {
 
   await findData.then((res) => {
     const {data} = res;
-    console.log(data[0].python_articles);
+    console.log(data[0].articles);
     // console.log(res.data[0]);
     // console.log({python_articles} = res);
 
@@ -29,7 +29,7 @@ async function findArticle() {
     const div = document.querySelector('#root');
 
     // Collect Data
-    const articlesArr = data[0].python_articles;
+    const articlesArr = data[0].articles;
     console.log(`whuttt --> ${articlesArr.title}`);
     console.log('THIS IS ARTICLE --> ',articlesArr);
 
@@ -37,7 +37,7 @@ async function findArticle() {
       console.log(article.topic);
       console.log('THIS IS THE ID ---> ', article._id);
       console.log('THIS IS THE article ---> ', article.title);
-      const userArticles = article.python_articles;
+      const userArticles = article.articles;
       // console.log(`whutt --> ${userArticles.article}`);
       // Create Elements
       const container = document.createElement('div');

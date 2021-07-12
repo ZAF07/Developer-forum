@@ -425,7 +425,7 @@ exports.saveThisArticle = (req, res) => {
 
     User.findOne({username: user}, (err, foundUser) => {
       console.log('FOUND USER ===> ', foundUser);
-      foundUser.python_articles.push(articleRecieved)
+      foundUser.articles.push(articleRecieved)
       foundUser.save();
     })
 
