@@ -12,12 +12,16 @@ exports.retrieveArticles = async (req, res) => {
 
   switch (topic) {
     case 'HTML':
-      HTMLModel.HtmlModel.find({}, (err, retArticle) => {
-        if (!err) {
-          const articles = retArticle;
-          res.send(articles);
-        }
-      });
+      // HTMLModel.HtmlModel.find({}, (err, retArticle) => {
+      //   if (!err) {
+      //     const articles = retArticle;
+      //     res.send(articles);
+      //   }
+      // });
+      HTMLModel.HtmlModel.find().sort({_id:-1}).exec((err, retArticle) => {
+        const articles = retArticle
+        res.send(articles);
+      })
       // await HTMLModel.showAllArticles().then((articles) => {
       //   console.log(
       //     '(TopicController)HERE ARE THE ARTICLES for HTML',
@@ -27,12 +31,16 @@ exports.retrieveArticles = async (req, res) => {
       // });
       break;
     case 'CSS':
-      await CSSModel.Style.find({}, (err, retArticle) => {
-        if (!err) {
-          const articles = retArticle;
-          res.send(articles);
-        }
-      });
+      // await CSSModel.Style.find({}, (err, retArticle) => {
+      //   if (!err) {
+      //     const articles = retArticle;
+      //     res.send(articles);
+      //   }
+      // });
+      CSSModel.Style.find().sort({_id:-1}).exec((err, retArticle) => {
+        const articles = retArticle
+        res.send(articles);
+      })
 
       //      ******* Before Fix *******
       // await CSSModel.showAllArticles().then(articles => {
@@ -41,39 +49,46 @@ exports.retrieveArticles = async (req, res) => {
       // })
       break;
     case 'Javascript':
-      await JsModel.Js.find({}, (err, retArticle) => {
-        if (!err) {
-          const articles = retArticle;
-          res.send(articles);
-        }
-      });
+      // await JsModel.Js.find({}, (err, retArticle) => {
+      //   if (!err) {
+      //     const articles = retArticle;
+      //     res.send(articles);
+      //   }
+      // });
+      JsModel.Js.find().sort({_id:-1}).exec((err, retArticle) => {
+        const articles = retArticle
+        res.send(articles);
+      })
       // await JsModel.showAllArticles().then((articles) => {
       //   console.log('(TopicController)HERE ARE THE ARTICLES for JS', articles);
       //   res.send(articles);
       // });
       break;
     case 'Python':
-      await PythonModel.Python.find({}, (err, retArticle) => {
-        if (!err) {
-          const articles = retArticle;
-          res.send(articles);
-        }
-      });
-      // await PythonModel.showAllArticles().then((articles) => {
-      //   console.log(
-      //     '(TopicController) Here are the articles for PYTHON',
-      //     articles
-      //   );
-      //   res.send(articles);
+      // await PythonModel.Python.find({}, (err, retArticle) => {
+      //   if (!err) {
+      //     const articles = retArticle;
+      //     res.send(articles);
+      //   }
       // });
+      PythonModel.Python.find().sort({_id:-1}).exec((err, retArticle) => {
+        const articles = retArticle
+        res.send(articles);
+      })
+
       break;
     case 'PHP':
-      await PhpModel.Php.find({}, (err, retArticle) => {
-        if (!err) {
-          const articles = retArticle;
-          res.send(articles);
-        }
-      });
+      // await PhpModel.Php.find({}, (err, retArticle) => {
+      //   if (!err) {
+      //     const articles = retArticle;
+      //     res.send(articles);
+      //   }
+      // });
+      PhpModel.Php.find().sort({_id:-1}).exec((err, 
+      retArticle) => {
+        const articles = retArticle
+        res.send(articles);
+      })
       // await PhpModel.showAllArticles().then((articles) => {
       //   console.log(
       //     '(TopicController) Here are the articles for PHP',
@@ -83,12 +98,16 @@ exports.retrieveArticles = async (req, res) => {
       // });
       break;
     case 'NodeJS':
-      await NodeModel.Node.find({}, (err, retArticle) => {
-        if (!err) {
-          const articles = retArticle;
-          res.send(articles);
-        }
-      });
+      // await NodeModel.Node.find({}, (err, retArticle) => {
+      //   if (!err) {
+      //     const articles = retArticle;
+      //     res.send(articles);
+      //   }
+      // });
+      NodeModel.Node.find().sort({_id:-1}).exec((err, retArticle) => {
+        const articles = retArticle
+        res.send(articles);
+      })
       // await NodeModel.showAllArticles().then((articles) => {
       //   console.log(
       //     '(TopicController) Here are the articles for NODE',
@@ -98,12 +117,16 @@ exports.retrieveArticles = async (req, res) => {
       // });
       break;
     case 'Ruby':
-      await RubyModel.Ruby.find({}, (err, retArticle) => {
-        if (!err) {
-          const articles = retArticle;
-          res.send(articles);
-        }
-      });
+      // await RubyModel.Ruby.find({}, (err, retArticle) => {
+      //   if (!err) {
+      //     const articles = retArticle;
+      //     res.send(articles);
+      //   }
+      // });
+      RubyModel.Ruby.find().sort({_id:-1}).exec((err, retArticle) => {
+        const articles = retArticle
+        res.send(articles);
+      })
       // await RubyModel.showAllArticles().then((articles) => {
       //   console.log(
       //     '(TopicController) Here are the articles for RUBY',
@@ -201,12 +224,19 @@ exports.getOneArticle = async (req, res) => {
 
 exports.getUserArticles = async (req,res) => {
   const thisUser = req.params.user;
-        await User.find({username: thisUser}, (err, retArticle) => {
+        // await User.find({username: thisUser}, (err, retArticle) => {
 
-          if (!err) {
-                      // console.log('####### USER MODEL API #######', retArticle);
-            const articles = retArticle;
-            res.send(articles);
-          }
-        });
+        //   if (!err) {
+        //               // console.log('####### USER MODEL API #######', retArticle);
+        //     const articles = retArticle;
+        //     res.send(articles);
+        //   }
+        // });
+        User.find({username: thisUser}).sort({_id:-1}).exec((err, retArticle) => {
+  if (err) {
+    console.log('ERROR FROM APICONTROLLER FINDING USER ARTICLES -->', err);
+    return;
+  }
+  res.send(retArticle)
+})
 }

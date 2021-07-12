@@ -16,6 +16,7 @@ async function findArticle() {
   });
 
   await findData.then((res) => {
+    console.log(res);
     const {data} = res;
     console.log(data[0].articles);
     // console.log(res.data[0]);
@@ -30,13 +31,10 @@ async function findArticle() {
 
     // Collect Data
     const articlesArr = data[0].articles;
-    console.log(`whuttt --> ${articlesArr.title}`);
-    console.log('THIS IS ARTICLE --> ',articlesArr);
+   
 
     articlesArr.forEach((article) => {
-      console.log(article.topic);
-      console.log('THIS IS THE ID ---> ', article._id);
-      console.log('THIS IS THE article ---> ', article.title);
+;
       const userArticles = article.articles;
       // console.log(`whutt --> ${userArticles.article}`);
       // Create Elements

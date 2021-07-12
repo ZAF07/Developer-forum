@@ -12,6 +12,7 @@ const mongoose = require('mongoose');
   },
   topic: String,
   createdBy: String,
+  date: Date
 });
 
 // Define Model

@@ -11,172 +11,8 @@ const User = require('../models/user/user');
 exports.topics = async (req, res) => {
   const topic = req.params.topic;
   const userExists = req.user;
-
-  switch (topic) {
-    case 'HTML':
-      HTMLModel.HtmlModel.find({}, (err, retArticle) => {
-        if (!err) {
-          console.log('NO ERROR HERE ', retArticle);
-          const articles = retArticle;
-          res.render('topicTemplates/topic', {
-            title: topic,
-            link: `http://localhost:5000/topic/${topic}/article/`,
-            articles,
-            userExists: userExists,
-          });
-        }
-      });
-      // await HTMLModel.showAllArticles().then((articles) => {
-      //   console.log(
-      //     '(TopicController)HERE ARE THE ARTICLES for HTML',
-      //     articles
-      //   );
-      //   // res.send(articles);
-      //   res.render('topicTemplates/topic', {
-      //     title: topic,
-      //     articles: articles,
-      //   });
-      // });
-      break;
-    case 'CSS':
-      CSSModel.Style.find({}, (err, retArticle) => {
-        if (!err) {
-          const articles = retArticle;
-          res.render('topicTemplates/topic', {
-            title: topic,
-            link: `http://localhost:5000/topic/${topic}/article/`,
-            articles,
-            userExists: userExists,
-          });
-        }
-      });
-
-      //          *******  THIS IS BEFORE THE FIX *******
-      // await CSSModel.showAllArticles().then(articles => {
-      //   console.log('(TopicController)HERE ARE THE ARTICLES for CSS', articles);
-      //   // res.send(articles);
-      //   res.render('topicTemplates/topic', {
-      //     title: topic,
-      //     articles: articles
-      //   });
-      // })
-      break;
-    case 'Javascript':
-      JsModel.Js.find({}, (err, retArticle) => {
-        if (!err) {
-          const articles = retArticle;
-          res.render('topicTemplates/topic', {
-            title: topic,
-            link: `http://localhost:5000/topic/${topic}/article/`,
-            articles,
-            userExists: userExists,
-          });
-        }
-      });
-      //   await JsModel.showAllArticles().then((articles) => {
-      //     console.log('(TopicController)HERE ARE THE ARTICLES for JS', articles);
-      //     res.render('topicTemplates/topic', {
-      //       title: topic,
-      //       articles: articles,
-      //     });
-      //   });
-      break;
-    case 'Python':
-      PythonModel.Python.find({}, (err, retArticle) => {
-        if (!err) {
-          console.log('TOPICCONTROLLER LINE 92 ', retArticle);
-          const articles = retArticle;
-          res.render('topicTemplates/topic', {
-            title: topic,
-            link: `http://localhost:5000/topic/${topic}/article/`,
-            articles,
-            userExists: userExists,
-          });
-        }
-      });
-      //   await PythonModel.showAllArticles().then((articles) => {
-      //     console.log(
-      //       '(TopicController) Here are the articles for PYTHON',
-      //       articles
-      //     );
-      //     res.render('topicTemplates/topic', {
-      //       title: topic,
-      //       articles: articles,
-      //     });
-      //   });
-      break;
-    case 'PHP':
-      PhpModel.Php.find({}, (err, retArticle) => {
-        if (!err) {
-          const articles = retArticle;
-          res.render('topicTemplates/topic', {
-            title: topic,
-            link: `http://localhost:5000/topic/${topic}/article/`,
-            articles,
-            userExists: userExists,
-          });
-        }
-      });
-      // await PhpModel.showAllArticles().then((articles) => {
-      //   console.log(
-      //     '(TopicController) Here are the articles for PHP',
-      //     articles
-      //   );
-      //   res.render('topicTemplates/topic', {
-      //     title: topic,
-      //     articles: articles,
-      //   });
-      // });
-      break;
-    case 'NodeJS':
-      NodeModel.Node.find({}, (err, retArticle) => {
-        if (!err) {
-          const articles = retArticle;
-          res.render('topicTemplates/topic', {
-            title: topic,
-            link: `http://localhost:5000/topic/${topic}/article/`,
-            articles,
-            userExists: userExists,
-          });
-        }
-      });
-      // await NodeModel.showAllArticles().then((articles) => {
-      //   console.log(
-      //     '(TopicController) Here are the articles for NODE',
-      //     articles
-      //   );
-      //   res.render('topicTemplates/topic', {
-      //     title: topic,
-      //     articles: articles,
-      //   });
-      // });
-      break;
-    case 'Ruby':
-      RubyModel.Ruby.find({}, (err, retArticle) => {
-        if (!err) {
-          const articles = retArticle;
-          res.render('topicTemplates/topic', {
-            title: topic,
-            link: `http://localhost:5000/topic/${topic}/article/`,
-            articles,
-            userExists: userExists,
-          });
-        }
-      });
-      // await RubyModel.showAllArticles().then((articles) => {
-      //   console.log(
-      //     '(TopicController) Here are the articles for RUBY',
-      //     articles
-      //   );
-      //   res.render('topicTemplates/topic', {
-      //     title: topic,
-      //     articles: articles,
-      //   });
-      // });
-      break;
-    default:
-      res.redirect(404, 'http://localhost:5000');
-  }
+res.render('topicTemplates/topic', { title: topic})
+  
 };
 
 exports.specificArticle = (req, res) => {
@@ -185,152 +21,12 @@ exports.specificArticle = (req, res) => {
   const userExists = req.user;
   console.log('TOPIC FROM SPECIFICARTICLE CONTROLLER --> ', topic);
   console.log('IDDEEEE ', id);
-
-  switch (topic) {
-    case 'HTML':
-      HTMLModel.HtmlModel.findById(id, (err, retArticle) => {
-        if (!err) {
-          const article = retArticle;
-          console.log(
-            'THIS IS RETURNED ARTICLE FROM, TOPICCONTROLLER',
-            retArticle
-          );
-          res.render('topicTemplates/specificArticle', {
-            title: 'Specific Article',
-            topic,
-            id,
-            article,
-            h: article,
-
-            userExists: userExists,
-          });
-        } else {
-          console.log('Error -> ', err);
-        }
-      });
-      break;
-    case 'CSS':
-      CSSModel.Style.findById(id, (err, retArticle) => {
-        if (!err) {
-          const article = retArticle;
-          console.log(
-            'THIS IS RETURNED ARTICLE FROM, TOPICCONTROLLER',
-            retArticle
-          );
-          res.render('topicTemplates/specificArticle', {
-            title: 'Specific Article',
-            topic,
-            id,
-            article,
-
-            userExists: userExists,
-          });
-        } else {
-          console.log('Error -> ', err);
-        }
-      });
-      break;
-    case 'Javascript':
-      JsModel.Js.findById(id, (err, retArticle) => {
-        if (!err) {
-          const article = retArticle;
-          console.log(
-            'THIS IS RETURNED ARTICLE FROM, TOPICCONTROLLER',
-            retArticle
-          );
-          res.render('topicTemplates/specificArticle', {
-            title: 'Specific Article',
-            topic,
-            id,
-            article,
-            h: article,
-
-            userExists: userExists,
-          });
-        } else {
-          console.log('Error -> ', err);
-        }
-      });
-      break;
-    case 'PHP':
-      // await PhpModel.showAllArticles().then((articles) => {
-      PhpModel.Php.findById(id, (err, retArticle) => {
-        console.log(
-          '(TopicController) Here are the articles for PHP',
-          retArticle
-        );
-        const article = retArticle;
-        res.render('topicTemplates/specificArticle', {
-          title: 'Specific Article',
-          topic,
-          id,
-          article,
-          h: article,
-
-          userExists: userExists,
-        });
-      });
-      break;
-    case 'NodeJS':
-      // await NodeModel.showAllArticles().then((articles) => {
-      NodeModel.Node.findById(id, (err, retArticle) => {
-        console.log(
-          '(TopicController) Here are the articles for NODE',
-          retArticle
-        );
-        const article = retArticle;
-        res.render('topicTemplates/specificArticle', {
-          title: 'Specific Article',
-          topic,
-          id,
-          article,
-          h: article,
-
-          userExists: userExists,
-        });
-      });
-      break;
-    case 'Ruby':
-      // await RubyModel.showAllArticles().then((articles) => {
-      RubyModel.Ruby.findById(id, (err, retArticle) => {
-        console.log(
-          '(TopicController) Here are the articles for RUBY',
-          retArticle
-        );
-        const article = retArticle;
-        res.render('topicTemplates/specificArticle', {
-          title: 'Specific Article',
-          topic,
-          id,
-          article,
-          h: article,
-
-          userExists: userExists,
-        });
-      });
-      break;
-    case 'Python':
-      // await RubyModel.showAllArticles().then((articles) => {
-      PythonModel.Python.findById(id, (err, retArticle) => {
-        console.log(
-          '(TopicController) Here are the articles for PYTHON',
-          retArticle
-        );
-        const article = retArticle;
-        res.render('topicTemplates/specificArticle', {
-          title: 'Specific Article',
-          topic,
-          id,
-          article,
-          h: article,
-
-          userExists: userExists,
-        });
-      });
-      break;
-    default:
-      break;
-  }
+  res.render('topicTemplates/specificArticle', {
+    title: 'Specific Article',
+    topic,
+    id,
+    userExists: userExists,
+  });
 };
 
 exports.saveThisArticle = (req, res) => {
@@ -356,7 +52,8 @@ exports.saveThisArticle = (req, res) => {
       articleRecieved = new HTMLModel.HtmlModel({
         title: req.body.title,
         article: req.body.content,
-        topic: 'HTML'
+        topic: 'HTML',
+        date: new Date()
       });
       break;
     case 'javascript':
@@ -391,7 +88,8 @@ exports.saveThisArticle = (req, res) => {
       articleRecieved = new PythonModel.Python({
         title: req.body.title,
         article: req.body.content,
-        topic: 'Python'
+        topic: 'Python',
+        date: new Date()
       });
 
       userRecieved = new User({
@@ -402,26 +100,6 @@ exports.saveThisArticle = (req, res) => {
     default:
       break;
   }
-    // userRecieved.save((err) => {
-    //   if (!err) {
-    //     console.log(`ERROR SAVING INTO UISER WITH ARTICLE --> ${err}`);
-    //   }
-    //   console.log(`SUCCESS SAVING INTO ARTICLE`);
-    // });
-
-    // User.updateOne(
-    //   { username: user },
-    //   {
-    //     $set: {
-    //       python_articles: [articleRecieved],
-    //     },
-    //   }, (err, results) => {
-    //     if (err) {
-    //       console.log(`update err -->${err}`);
-    //     }
-    //     console.log(`SUCCESS UPDATING`);
-    //   }
-    // );
 
     User.findOne({username: user}, (err, foundUser) => {
       console.log('FOUND USER ===> ', foundUser);

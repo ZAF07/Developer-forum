@@ -1,11 +1,5 @@
 // Links to topic.ejs
 
-// async function getTopic() {
-//   const topic = await document.querySelector('.topic').innerHTML;
-
-//   console.log('This is the topic', topic);
-// }
-// getTopic();
 
 async function findArticle() {
   const topic = await document.querySelector('.topic').innerHTML;
@@ -36,7 +30,6 @@ async function findArticle() {
       const link = document.createElement('a');
 
       // Add Class to Elements
-      // p.classList = 'jumbotron'
       container.className = 'card p-3  shadow-lg p-3 mb-5 bg-white rounded';
       innerContainer.className = 'container';
 
@@ -48,16 +41,10 @@ async function findArticle() {
       link.innerHTML = '<small>Read this article</small>';
 
       // Populate the container
-      // container.appendChild(h4)
       container.appendChild(h4);
       container.appendChild(small);
       container.appendChild(link);
 
-      // Add Elements to DOM
-      // div.appendChild(h4);
-      // div.appendChild(small);
-      // div.appendChild(link)
-      // div.appendChild(br)
       div.appendChild(container);
     });
   });

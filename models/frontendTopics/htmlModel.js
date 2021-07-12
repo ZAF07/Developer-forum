@@ -12,6 +12,7 @@ const htmlSchema = mongoose.Schema({
   },
   topic: String,
   createdBy: String,
+  date: Date
 });
 
 // Define a Model
